@@ -1,6 +1,6 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
-extension ColorExtensions on Color {
+extension $ColorExtensions on Color {
   MaterialColor toMaterialColor() {
     final strengths = [.05];
     final swatch = <int, Color>{};

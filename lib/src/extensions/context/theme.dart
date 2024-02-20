@@ -1,6 +1,6 @@
-import 'package:flutter_zitherharp/flutter_zitherharp.dart';
+part of '/src/extensions/context.dart';
 
-extension ThemeExtensions on BuildContext {
+extension $ThemeExtensions on BuildContext {
   ThemeData get _theme => Theme.of(this);
 
   Brightness get brightness => _theme.brightness;

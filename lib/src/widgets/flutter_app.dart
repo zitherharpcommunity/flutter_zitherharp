@@ -1,3 +1,4 @@
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// An application that uses Flutter Design.
@@ -16,6 +17,11 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
       PointerDeviceKind.unknown,
     },
   );
+
+  static void ensureInitialized() {
+    WidgetsFlutterBinding.ensureInitialized();
+    usePathUrlStrategy();
+  }
 
   const FlutterApp({
     super.key,

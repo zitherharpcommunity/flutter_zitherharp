@@ -1,3 +1,4 @@
 library packages;
 
-export '/src/packages/exports/blocs.dart';
+export '../packages/exports/flutter_bloc.dart';
+export '../packages/exports/url_launcher.dart';

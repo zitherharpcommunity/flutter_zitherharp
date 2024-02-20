@@ -1,6 +1,6 @@
-import 'package:flutter_zitherharp/flutter_zitherharp.dart';
+part of '/src/extensions/context.dart';
 
-extension SizeExtensions on BuildContext {
+extension $SizeExtensions on BuildContext {
   /// The data from the closest instance of this class that encloses the given context.
   MediaQueryData get _data => MediaQuery.of(this);
 

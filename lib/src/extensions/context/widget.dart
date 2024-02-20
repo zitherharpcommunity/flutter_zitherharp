@@ -1,6 +1,6 @@
-import 'package:flutter_zitherharp/flutter_zitherharp.dart';
+part of '/src/extensions/context.dart';
 
-extension WidgetExtensions on BuildContext {
+extension $WidgetExtensions on BuildContext {
   ScaffoldMessengerState get _scaffoldState => ScaffoldMessenger.of(this);
 
   /// Insert the given [entry] into the overlay.
@@ -36,13 +36,16 @@ extension WidgetExtensions on BuildContext {
       );
   }
 
-  ScaffoldMessengerState showMaterialBanner(String message) {
+  ScaffoldMessengerState showMaterialBanner(
+    String message, {
+    List<Widget> actions = const [],
+  }) {
     return _scaffoldState
       ..hideCurrentMaterialBanner()
       ..showMaterialBanner(
         MaterialBanner(
           content: Text(message),
-          actions: const [],
+          actions: actions,
         ),
       );
   }

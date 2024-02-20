@@ -1,0 +1,29 @@
+name: flutter_zitherharp
+description: A shared library used for apps of Zither Harp.
+version: 0.0.1
+homepage: https://pub.dev/documentation/flutter_zitherharp
+repository: https://github.com/zitherharpcommunity/flutter_zitherharp
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  
+  intl: any
+  http: any
+  flutter_bloc: ^8.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true

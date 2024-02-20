@@ -3,6 +3,7 @@ description: A shared library used for apps of Zither Harp.
 version: 0.0.1
 homepage: https://pub.dev/documentation/flutter_zitherharp
 repository: https://github.com/zitherharpcommunity/flutter_zitherharp
+issue_tracker: https://github.com/zitherharpcommunity/flutter_zitherharp/issues
 
 environment:
   sdk: '>=3.0.5 <4.0.0'

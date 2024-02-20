@@ -3,6 +3,7 @@ library widgets;
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 export '/src/widgets/async_builder.dart';
+export '/src/widgets/flutter_app.dart';
 export '/src/widgets/image_factory.dart';
 export '/src/widgets/text_builder.dart';
 

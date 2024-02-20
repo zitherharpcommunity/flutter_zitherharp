@@ -1,0 +1,9 @@
+android/
+ios/
+test/
+windows/
+.git/
+.gitignore
+.metadata
+.flutter-plugins
+.flutter-plugins-dependencies

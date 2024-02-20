@@ -8,8 +8,8 @@ final kIsMobile = defaultTargetPlatform == TargetPlatform.android ||
 final kIsDesktop = defaultTargetPlatform == TargetPlatform.linux ||
     defaultTargetPlatform == TargetPlatform.windows;
 
-/// The setting indicating the current brightness mode of the host platform. 
-/// 
+/// The setting indicating the current brightness mode of the host platform.
+///
 /// If the platform has no preference, [platformBrightness] defaults to [Brightness.light].
 Brightness get platformBrightness =>
     SchedulerBinding.instance.platformDispatcher.platformBrightness;

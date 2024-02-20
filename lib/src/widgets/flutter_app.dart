@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
@@ -18,9 +19,14 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     },
   );
 
-  static void ensureInitialized() {
-    WidgetsFlutterBinding.ensureInitialized();
+  static void ensureInitialized({
+    String? name,
+    FirebaseOptions? options,
+  }) {
     usePathUrlStrategy();
+    WidgetsFlutterBinding.ensureInitialized();
+    if (name == null && options == null) return;
+    Firebase.initializeApp(name: name, options: options);
   }
 
   const FlutterApp({

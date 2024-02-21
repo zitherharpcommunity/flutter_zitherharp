@@ -31,6 +31,8 @@ extension $WidgetExtensions on BuildContext {
           content: Text(message),
           action: action,
           behavior: behavior,
+          showCloseIcon: true,
+          width: isPortrait ? null : width / 3,
           duration: const Duration(seconds: 2),
         ),
       );

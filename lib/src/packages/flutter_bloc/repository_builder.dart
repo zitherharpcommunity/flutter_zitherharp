@@ -13,6 +13,7 @@ final class RepositoryBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// {@macro repository_provider}
   const RepositoryBuilder({
     super.key,
+    this.buildWhen,
     required this.bloc,
     required this.builder,
   });
@@ -26,13 +27,19 @@ final class RepositoryBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// This is analogous to the [builder] function in [StreamBuilder].
   final BlocWidgetBuilder<S> builder;
 
+  /// Return `true` or `false` to determine whether or not to rebuild the widget with state.
+  final BlocBuilderCondition<S>? buildWhen;
+
   @override
   @nonVirtual
   Widget build(BuildContext context) {
-    return RepositoryProvider(
+    return BlocProvider(
       key: key,
       create: (_) => bloc,
-      child: BlocBuilder<C, S>(builder: builder),
+      child: BlocBuilder<C, S>(
+        builder: builder,
+        buildWhen: buildWhen,
+      ),
     );
   }
 }

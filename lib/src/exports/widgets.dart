@@ -1,5 +1,3 @@
-library widgets;
-
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 export '/src/widgets/async_builder.dart';

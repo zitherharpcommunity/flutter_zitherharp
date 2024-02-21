@@ -1,5 +1,3 @@
-library entities;
-
 export '/src/entities/border_radius.dart';
 export '/src/entities/constant_value.dart';
 export '/src/entities/edge_insets.dart';

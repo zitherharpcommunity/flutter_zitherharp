@@ -1,14 +1,16 @@
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
-/// An application that uses Flutter Design.
+/// An application that uses design of FLutter.
 final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     extends StatelessWidget {
+  /// The default map of keyboard shortcuts to intents for the application.
   static final shortcuts = {
     ...WidgetsApp.defaultShortcuts,
     const SingleActivator(LogicalKeyboardKey.select): const ActivateIntent(),
   };
 
+  /// The default [ScrollBehavior] for the application.
   static final scrollBehavior = const MaterialScrollBehavior().copyWith(
     dragDevices: {
       PointerDeviceKind.mouse,
@@ -18,6 +20,11 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     },
   );
 
+  /// You only need to call this method
+  /// if you need the binding to be initialized before calling [runApp].
+  ///
+  /// If no binding has yet been initialized,
+  /// the [WidgetsFlutterBinding] class is used to create and initialize one.
   static void ensureInitialized({
     String? name,
     FirebaseOptions? options,
@@ -28,6 +35,7 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     Firebase.initializeApp(name: name, options: options);
   }
 
+  /// Creates a [FlutterApp].
   const FlutterApp({
     super.key,
     required this.bloc,

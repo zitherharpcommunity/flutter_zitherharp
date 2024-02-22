@@ -1,6 +1,21 @@
+import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 sealed class UrlLauncher {
+  /// Summons the platform's share sheet to share text.
+  /// 
+  /// The optional [subject] parameter can be used to 
+  /// populate a subject if the user chooses to send an email.
+  static Future<void> share(
+    String text, {
+    String? subject,
+  }) {
+    return Share.share(
+      text,
+      subject: subject,
+    );
+  }
+
   static Future<bool> openUrl(String url) {
     return launchUrlString(
       url,

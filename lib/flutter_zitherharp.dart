@@ -1,5 +1,8 @@
 library flutter_zitherharp;
 
+export 'dart:async';
+export 'dart:convert';
+
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';

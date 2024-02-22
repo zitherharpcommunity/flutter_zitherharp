@@ -28,11 +28,16 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
   static void ensureInitialized({
     String? name,
     FirebaseOptions? options,
-  }) {
+    bool useFirebasePlugins = false,
+  }) async {
     usePathUrlStrategy();
     WidgetsFlutterBinding.ensureInitialized();
     if (name == null && options == null) return;
     Firebase.initializeApp(name: name, options: options);
+    if (useFirebasePlugins == false) return;
+    FlutterAppCheck.ensureInitialized();
+    FlutterCrashlytics.ensureInitialized();
+    FlutterRemoteConfig.ensureInitialized();
   }
 
   /// Creates a [FlutterApp].

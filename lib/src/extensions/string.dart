@@ -8,5 +8,6 @@ extension $NullableStringExtensions on String? {
 }
 
 extension $NonNullStringExtensions on String {
-  String get capitalized => substring(0, 1).toUpperCase() + substring(1);
+  String get capitalized =>
+      isEmpty ? this : substring(0, 1).toUpperCase() + substring(1);
 }

@@ -1,10 +1,12 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+/// The entry point for accessing a [FirebaseCrashlytics].
 sealed class FlutterCrashlytics {
   static final _crashlytics = FirebaseCrashlytics.instance;
   static final _platformDispatcher = PlatformDispatcher.instance;
 
+  /// Submits a Crashlytics report of a fatal error caught by the Flutter framework.
   static Future<void> ensureInitialized() async {
     FlutterError.onError = (errorDetails) {
       _crashlytics.recordFlutterFatalError(errorDetails);

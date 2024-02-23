@@ -12,3 +12,15 @@ const emptyPlaceholder = SizedBox.shrink();
 const centeredLoadingIndicator = Center(
   child: CircularProgressIndicator(),
 );
+
+/// A circular progress indicator that tops its parent.
+const toppedLoadingIndicator = Align(
+  alignment: Alignment.topCenter,
+  child: LinearProgressIndicator(),
+);
+
+/// A circular progress indicator that bottoms its parent.
+const bottomedLoadingIndicator = Align(
+  alignment: Alignment.bottomCenter,
+  child: LinearProgressIndicator(),
+);

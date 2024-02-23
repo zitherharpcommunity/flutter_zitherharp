@@ -8,7 +8,7 @@ abstract base class FlutterPreferences {
   late final SharedPreferences prefs;
 
   /// Loads and parses the [SharedPreferences] for this app from disk.
-  Future<void> ensuredInitialized() async {
+  Future<void> ensureInitialized() async {
     prefs = await SharedPreferences.getInstance();
   }
 

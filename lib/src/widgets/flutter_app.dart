@@ -33,11 +33,11 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     usePathUrlStrategy();
     WidgetsFlutterBinding.ensureInitialized();
     if (name == null && options == null) return;
-    Firebase.initializeApp(name: name, options: options);
+    await Firebase.initializeApp(name: name, options: options);
     if (useFirebasePlugins == false) return;
-    FlutterAppCheck.ensureInitialized();
-    FlutterCrashlytics.ensureInitialized();
-    FlutterRemoteConfig.ensureInitialized();
+    await FlutterAppCheck.ensureInitialized();
+    await FlutterCrashlytics.ensureInitialized();
+    await FlutterRemoteConfig.ensureInitialized();
   }
 
   /// Creates a [FlutterApp].

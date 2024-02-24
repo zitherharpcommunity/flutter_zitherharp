@@ -1,6 +1,6 @@
 part of '/src/extensions/context.dart';
 
-extension $WidgetExtensions on BuildContext {
+extension $WidgetExtension on BuildContext {
   ScaffoldMessengerState get _scaffoldState => ScaffoldMessenger.of(this);
 
   /// Insert the given [entry] into the overlay.

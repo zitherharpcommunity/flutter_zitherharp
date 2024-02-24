@@ -1,4 +1,4 @@
-extension $EnumsExtensions<T extends Enum> on Iterable<T> {
+extension $EnumsExtension<T extends Enum> on Iterable<T> {
   /// Finds the enum value in this list with [name].
   ///
   /// Goes through this collection looking for an enum with

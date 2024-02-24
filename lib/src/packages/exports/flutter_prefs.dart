@@ -10,8 +10,8 @@ abstract base class FlutterPreferences {
   /// The version code of the app.
   int get versionCode;
 
-  /// The ersion name of the app.
-  int get versionName;
+  /// The version name of the app.
+  String get versionName;
 
   /// Loads and parses the [SharedPreferences] for this app from disk.
   Future<void> ensureInitialized() async {

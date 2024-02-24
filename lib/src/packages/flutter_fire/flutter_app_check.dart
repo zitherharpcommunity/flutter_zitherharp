@@ -11,11 +11,32 @@ sealed class FlutterAppCheck {
   static const _androidProvider =
       kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity;
 
+  static dynamic _getWebProvider(
+    String? recaptchaSiteKey,
+    String? recaptchaEnterpriseSiteKey,
+  ) {
+    if (!kIsWeb ||
+        recaptchaSiteKey == null ||
+        recaptchaEnterpriseSiteKey == null) {
+      return null;
+    }
+    return kDebugMode
+        ? ReCaptchaV3Provider(recaptchaSiteKey)
+        : ReCaptchaEnterpriseProvider(recaptchaEnterpriseSiteKey);
+  }
+
   /// Activates the [FirebaseAppCheck] service.
-  static Future<void> ensureInitialized() async {
+  static Future<void> ensureInitialized({
+    String? recaptchaSiteKey,
+    String? recaptchaEnterpriseSiteKey,
+  }) async {
     return _appCheck.activate(
       appleProvider: _appleProvider,
       androidProvider: _androidProvider,
+      webProvider: _getWebProvider(
+        recaptchaSiteKey,
+        recaptchaEnterpriseSiteKey,
+      ),
     );
   }
 }

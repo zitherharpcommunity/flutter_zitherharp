@@ -29,13 +29,17 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     String? name,
     FirebaseOptions? options,
     bool useFirebasePlugins = false,
+    Map<String, dynamic>? parameters,
   }) async {
     usePathUrlStrategy();
     WidgetsFlutterBinding.ensureInitialized();
     if (name == null && options == null) return;
     await Firebase.initializeApp(name: name, options: options);
     if (useFirebasePlugins == false) return;
-    await FlutterAppCheck.ensureInitialized();
+    await FlutterAppCheck.ensureInitialized(
+      recaptchaSiteKey: parameters?['recaptchaSiteKey'],
+      recaptchaEnterpriseSiteKey: parameters?['recaptchaEnterpriseSiteKey'],
+    );
     await FlutterCrashlytics.ensureInitialized();
     await FlutterRemoteConfig.ensureInitialized();
   }

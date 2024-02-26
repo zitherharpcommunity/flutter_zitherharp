@@ -18,7 +18,7 @@ typedef CubitWidgetBuilder<C extends BaseCubit<S>, S extends BaseState> = Widget
 /// Please refer to [BlocListener] if you want to "do" anything in response to
 /// `state` changes such as navigation, showing a dialog, etc...
 /// {@endtemplate}
-class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
+final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
     extends StatelessWidget {
   /// {@macro cubit_builder}
   const CubitBuilder({

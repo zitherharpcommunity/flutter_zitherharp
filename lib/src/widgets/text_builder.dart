@@ -1,7 +1,7 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// A paragraph of [Text] widget.
-class TextBuilder extends StatelessWidget {
+final class TextBuilder extends StatelessWidget {
   /// Creates a paragraph of [Text] widget.
   const TextBuilder({
     super.key,

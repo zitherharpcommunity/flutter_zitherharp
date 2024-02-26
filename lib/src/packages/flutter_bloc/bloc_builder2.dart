@@ -17,7 +17,7 @@ typedef BlocWidgetBuilder2<S1, S2> = Widget Function(
 /// [BlocBuilder2] improves the readability
 /// and eliminates the need to nest two [BlocBuilder]s.
 /// {@endtemplate}
-class BlocBuilder2<B1 extends BaseCubit<S1>, S1 extends BaseState,
+final class BlocBuilder2<B1 extends BaseCubit<S1>, S1 extends BaseState,
     B2 extends BaseCubit<S2>, S2 extends BaseState> extends StatelessWidget {
   /// {@macro bloc_builder2}
   const BlocBuilder2({

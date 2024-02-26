@@ -1,6 +1,6 @@
 extension $NullableStringExtension on String? {
   /// Returns `true` if the string is null or empty.
-  /// 
+  ///
   /// Returns `false` if the string is not null and not empty.
   bool get isNullOrEmpty {
     final value = this;

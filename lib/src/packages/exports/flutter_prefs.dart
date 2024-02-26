@@ -4,6 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Wraps NSUserDefaults (on iOS) and SharedPreferences (on Android),
 /// providing a persistent store for simple data.
 abstract base class FlutterPreferences {
+  /// Data is persisted to disk asynchronously.
   @protected
   late final SharedPreferences prefs;
 

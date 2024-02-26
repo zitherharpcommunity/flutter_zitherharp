@@ -1,7 +1,8 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// {@template repository_provider}
-/// Takes a [bloc] value that is responsible for creating the repository
+/// Takes a [cubit] value that is responsible for creating the repository
 /// and a [builder] function which will have access to the repository.
 ///
 /// It is used as a _dependency injection (DI)_
@@ -13,19 +14,25 @@ final class RepositoryBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// {@macro repository_provider}
   const RepositoryBuilder({
     super.key,
+    this.listen = false,
     this.buildWhen,
-    required this.bloc,
+    required this.cubit,
     required this.builder,
   });
 
-  final C bloc;
+  /// The [cubit] that the [CubitBuilder] will interact with.
+  final C cubit;
+
+  /// Obtain a value from the nearest ancestor provider of type [S],
+  /// and subscribe to the provider.
+  final bool listen;
 
   /// The [builder] function which will be invoked on each widget build.
   ///
   /// The [builder] takes the BuildContext and current state and must return a widget.
   ///
   /// This is analogous to the [builder] function in [StreamBuilder].
-  final BlocWidgetBuilder<S> builder;
+  final CubitWidgetBuilder<C, S> builder;
 
   /// Return `true` or `false` to determine whether or not to rebuild the widget with state.
   final BlocBuilderCondition<S>? buildWhen;
@@ -35,8 +42,9 @@ final class RepositoryBuilder<C extends BaseCubit<S>, S extends BaseState>
   Widget build(BuildContext context) {
     return BlocProvider(
       key: key,
-      create: (_) => bloc,
-      child: BlocBuilder<C, S>(
+      create: (_) => cubit,
+      child: CubitBuilder<C, S>(
+        listen: listen,
         builder: builder,
         buildWhen: buildWhen,
       ),

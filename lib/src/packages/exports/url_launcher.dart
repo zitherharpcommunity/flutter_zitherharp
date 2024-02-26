@@ -3,8 +3,8 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 sealed class UrlLauncher {
   /// Summons the platform's share sheet to share text.
-  /// 
-  /// The optional [subject] parameter can be used to 
+  ///
+  /// The optional [subject] parameter can be used to
   /// populate a subject if the user chooses to send an email.
   static Future<void> share(
     String text, {
@@ -16,6 +16,7 @@ sealed class UrlLauncher {
     );
   }
 
+  /// Passes [url] to the underlying platform for handling.
   static Future<bool> openUrl(String url) {
     return launchUrlString(
       url,
@@ -23,6 +24,7 @@ sealed class UrlLauncher {
     );
   }
 
+  /// Passes [email] to the underlying platform for handling.
   static Future<bool> openEmail(
     String email, {
     String? subject,

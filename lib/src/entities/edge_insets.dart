@@ -1,5 +1,7 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+const edgeInsets0 = EdgeInsets.zero;
+
 const edgeInsets8 = EdgeInsets.all(8);
 
 const edgeInsets16 = EdgeInsets.all(16);

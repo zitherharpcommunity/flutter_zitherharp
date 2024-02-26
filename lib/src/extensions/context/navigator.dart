@@ -5,7 +5,7 @@ extension $NavigatorExtension on BuildContext {
   void pop<T>([T? result]) {
     Navigator.pop(this, result);
   }
-  
+
   /// Pop the top-most route off the current screen.
   void back<T>([T? result]) {
     GoRouter.of(this).pop(result);
@@ -18,7 +18,7 @@ extension $NavigatorExtension on BuildContext {
     Map<String, dynamic>? params,
   }) {
     final uri = Uri(
-      path:path,
+      path: path,
       queryParameters: params,
     );
     GoRouter.of(this).go(

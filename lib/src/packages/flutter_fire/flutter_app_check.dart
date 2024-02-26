@@ -25,6 +25,10 @@ sealed class FlutterAppCheck {
         : ReCaptchaEnterpriseProvider(recaptchaEnterpriseSiteKey);
   }
 
+  static const recaptchaSiteKey = 'recaptchaSiteKey';
+
+  static const recaptchaEnterpriseSiteKey = 'recaptchaEnterpriseSiteKey';
+
   /// Activates the [FirebaseAppCheck] service.
   static Future<void> ensureInitialized({
     String? recaptchaSiteKey,

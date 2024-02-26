@@ -1,7 +1,7 @@
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
-/// An application that uses design of FLutter.
+/// An application that uses design of Flutter.
 final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     extends StatelessWidget {
   /// The default map of keyboard shortcuts to intents for the application.
@@ -31,14 +31,15 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     bool useFirebasePlugins = false,
     Map<String, dynamic>? parameters,
   }) async {
-    usePathUrlStrategy();
+    if (kIsWeb) usePathUrlStrategy();
     WidgetsFlutterBinding.ensureInitialized();
     if (name == null && options == null) return;
     await Firebase.initializeApp(name: name, options: options);
     if (useFirebasePlugins == false) return;
     await FlutterAppCheck.ensureInitialized(
-      recaptchaSiteKey: parameters?['recaptchaSiteKey'],
-      recaptchaEnterpriseSiteKey: parameters?['recaptchaEnterpriseSiteKey'],
+      recaptchaSiteKey: parameters?[FlutterAppCheck.recaptchaSiteKey],
+      recaptchaEnterpriseSiteKey:
+          parameters?[FlutterAppCheck.recaptchaEnterpriseSiteKey],
     );
     await FlutterCrashlytics.ensureInitialized();
     await FlutterRemoteConfig.ensureInitialized();
@@ -47,17 +48,18 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
   /// Creates a [FlutterApp].
   const FlutterApp({
     super.key,
-    required this.bloc,
+    required this.cubit,
     required this.builder,
   });
 
-  final C bloc;
-  final BlocWidgetBuilder<S> builder;
+  final C cubit;
+
+  final CubitWidgetBuilder<C, S> builder;
 
   @override
   Widget build(BuildContext context) {
     return RepositoryBuilder(
-      bloc: bloc,
+      cubit: cubit,
       builder: builder,
     );
   }

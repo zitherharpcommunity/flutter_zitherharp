@@ -4,12 +4,12 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 sealed class FlutterAnalytics {
   static final _analytics = FirebaseAnalytics.instance;
 
-  /// Logs a custom [FirebaseAnalytics] event 
+  /// Logs a custom [FirebaseAnalytics] event
   /// with the given [name] and event [parameters].
   static Future<void> logEvent({
     required String name,
     Map<String, Object?>? parameters,
-  }) async {
+  }) {
     return _analytics.logEvent(
       name: name,
       parameters: parameters,

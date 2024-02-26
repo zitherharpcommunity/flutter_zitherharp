@@ -17,11 +17,11 @@ A shared library used for apps of Zither Harp.
 
 ## Features
 
-- /entities
-- /exports
-- /extensions
-- /packages
-- /widgets
+- entities
+- exports
+- extensions
+- packages
+- widgets
 
 ## Usage
 

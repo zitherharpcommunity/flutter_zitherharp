@@ -18,7 +18,7 @@ sealed class FlutterCrashlytics {
       _crashlytics.recordError(error, stack, fatal: true);
       return true;
     };
-    await _crashlytics.setCrashlyticsCollectionEnabled(true);
+    await _crashlytics.setCrashlyticsCollectionEnabled(!kDebugMode);
   }
 
   /// Submits a [Error] report of a caught error.

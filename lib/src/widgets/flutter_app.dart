@@ -41,8 +41,8 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
       recaptchaEnterpriseSiteKey:
           parameters?[FlutterAppCheck.recaptchaEnterpriseSiteKey],
     );
-    await FlutterCrashlytics.ensureInitialized();
     await FlutterRemoteConfig.ensureInitialized();
+    if (!kIsWeb) await FlutterCrashlytics.ensureInitialized();
   }
 
   /// Creates a [FlutterApp].

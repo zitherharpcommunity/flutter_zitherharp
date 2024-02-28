@@ -2,7 +2,7 @@ import 'dart:math';
 
 extension $IterableExtension<T> on Iterable<T> {
   /// A cryptographically secure random number generator.
-  static final _random = Random.secure();
+  static final Random _random = Random.secure();
 
   /// Returns the elements of this [Iterable] randomly.
   Iterable<T> get shuffled => toList()..shuffle(_random);

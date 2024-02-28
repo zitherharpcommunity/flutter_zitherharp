@@ -12,9 +12,9 @@ extension $NavigatorExtension on BuildContext {
   }
 
   /// Navigate to a URI location with optional query parameters.
-  void push(
+  void push<T>(
     String path, {
-    Object? extra,
+    T? extra,
     Map<String, dynamic>? params,
   }) {
     final uri = Uri(

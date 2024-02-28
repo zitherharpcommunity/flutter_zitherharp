@@ -1,5 +1,4 @@
-export '/src/entities/border_radius.dart';
-export '/src/entities/constant_value.dart';
-export '/src/entities/edge_insets.dart';
-export '/src/entities/sized_box.dart';
-export '/src/entities/target_platform.dart';
+export '../entities/border_radius.dart';
+export '../entities/edge_insets.dart';
+export '../entities/sized_box.dart';
+export '../entities/target_platform.dart';

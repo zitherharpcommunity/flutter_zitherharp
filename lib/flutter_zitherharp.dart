@@ -13,4 +13,5 @@ export 'package:go_router/go_router.dart' hide GoRouterHelper;
 export '/src/exports/entities.dart';
 export '/src/exports/extensions.dart';
 export '/src/exports/packages.dart';
+export '/src/exports/constants.dart';
 export '/src/exports/widgets.dart';

@@ -1,6 +1,6 @@
-export '/src/extensions/color.dart';
-export '/src/extensions/context.dart';
-export '/src/extensions/enum.dart';
-export '/src/extensions/object.dart';
-export '/src/extensions/service.dart';
-export '/src/extensions/string.dart';
+export '../extensions/color.dart';
+export '../extensions/context.dart';
+export '../extensions/enum.dart';
+export '../extensions/object.dart';
+export '../extensions/service.dart';
+export '../extensions/string.dart';

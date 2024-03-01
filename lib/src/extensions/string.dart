@@ -11,7 +11,13 @@ extension $NullableStringExtension on String? {
 }
 
 extension $NonNullStringExtension on String {
+  /// Whether this string is blank.
+  bool get isBlank => trim().isEmpty;
+
+  /// Whether this string is not blank.
+  bool get isNotBlank => trim().isNotEmpty;
+
   /// Returns the string with the first letter capitalized.
   String get capitalized =>
-      isEmpty ? this : substring(0, 1).toUpperCase() + substring(1);
+      length < 2 ? this : substring(0, 1).toUpperCase() + substring(1);
 }

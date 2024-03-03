@@ -1,7 +1,7 @@
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-sealed class UrlLauncher {
+sealed class FlutterLauncher {
   /// Summons the platform's share sheet to share text.
   ///
   /// The optional [subject] parameter can be used to

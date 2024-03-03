@@ -9,9 +9,9 @@ typedef CubitWidgetBuilder<C extends BaseCubit<S>, S extends BaseState> = Widget
     Function(BuildContext context, C cubit, S state);
 
 /// {@template cubit_builder}
-/// [BlocBuilder] handles building a widget in response to new `states`.
+/// [CubitBuilder] handles building a widget in response to new `states`.
 ///
-/// [BlocBuilder] is analogous to [StreamBuilder] but has simplified API to
+/// [CubitBuilder] is analogous to [StreamBuilder] but has simplified API to
 /// reduce the amount of boilerplate code needed as well as [cubit]-specific
 /// performance improvements.
 

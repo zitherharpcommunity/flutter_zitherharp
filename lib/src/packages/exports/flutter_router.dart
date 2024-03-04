@@ -4,13 +4,14 @@ import 'package:go_router/go_router.dart';
 abstract base class FlutterRouter {
   const FlutterRouter();
 
-  /// An object to configure the underlying [Router].
+  /// Default constructor to configure a [BlocRouter]
+  /// with a routes builder and an error page builder.
   BlocRouter get config;
 
+  /// An object to configure the underlying [Router].
+  List<RouteBase> get routes;
+
   /// A page builder for this route.
-  ///
-  /// - [path] and [name] cannot be empty strings.
-  /// - [child] and [builder] must be provided.
   @protected
   @nonVirtual
   GoRoute configure<C extends BaseCubit>({
@@ -39,12 +40,13 @@ abstract base class FlutterRouter {
 /// The route configuration for the app.
 typedef BlocRouter = GoRouter;
 
+/// The function to build route configuration for the app.
 typedef BlocRouterBuilder<C extends BaseCubit> = C Function(
   BuildContext context,
   GoRouterState state,
 );
 
-/// [GoRouter] extension to add navigation function to a [BuildContext] object.
+/// [BlocRouter] extension to add navigation function to a [BuildContext] object.
 extension $FlutterRouterExtension on BuildContext {
   /// Pop the top-most route off the current screen.
   ///

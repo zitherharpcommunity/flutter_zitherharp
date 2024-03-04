@@ -8,7 +8,6 @@ export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/scheduler.dart' hide Flow;
 export 'package:flutter/services.dart';
-export 'package:http/http.dart';
 export 'package:intl/intl.dart' hide TextDirection;
 
 export '/src/exports/constants.dart';

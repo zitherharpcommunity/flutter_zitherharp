@@ -36,6 +36,7 @@ abstract base class FlutterRouter {
   }
 }
 
+/// The route configuration for the app.
 typedef BlocRouter = GoRouter;
 
 typedef BlocRouterBuilder<C extends BaseCubit> = C Function(

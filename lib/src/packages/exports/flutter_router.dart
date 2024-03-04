@@ -1,13 +1,11 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 import 'package:go_router/go_router.dart';
 
-typedef BlocRouterBuilder<C extends BaseCubit> = C Function(
-  BuildContext context,
-  GoRouterState state,
-);
-
 abstract base class FlutterRouter {
   const FlutterRouter();
+
+  /// An object to configure the underlying [Router].
+  BlocRouter get config;
 
   /// A page builder for this route.
   ///
@@ -38,12 +36,20 @@ abstract base class FlutterRouter {
   }
 }
 
+typedef BlocRouter = GoRouter;
+
+typedef BlocRouterBuilder<C extends BaseCubit> = C Function(
+  BuildContext context,
+  GoRouterState state,
+);
+
 /// [GoRouter] extension to add navigation function to a [BuildContext] object.
 extension $FlutterRouterExtension on BuildContext {
   /// Pop the top-most route off the current screen.
   ///
   /// If [useRootNavigator] is `true`,
-  /// this method pops it instead of any [GoRoute] under it.
+  /// this method pops a pop up or dialog,
+  /// instead of any [GoRoute] under it.
   void pop<T>({
     T? result,
     bool useRootNavigator = false,

@@ -40,7 +40,7 @@ extension $WidgetExtension on BuildContext {
       );
   }
 
-  /// Shows a [MaterialBanner] across all registered [Scaffold]s. 
+  /// Shows a [MaterialBanner] across all registered [Scaffold]s.
   ScaffoldMessengerState showMaterialBanner(
     String message, {
     List<Widget> actions = const [],

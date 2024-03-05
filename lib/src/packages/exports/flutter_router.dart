@@ -9,7 +9,7 @@ abstract base class FlutterRouter {
   BlocRouter get config;
 
   /// An object to configure the underlying [Router].
-  List<RouteBase> get routes;
+  List<GoRoute> get routes;
 
   /// A page builder for this route.
   @protected

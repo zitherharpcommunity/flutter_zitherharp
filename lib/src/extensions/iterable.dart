@@ -18,7 +18,7 @@ extension $IterableExtension<T> on Iterable<T> {
     _list.add(value);
   }
 
-  void assignAll(List<T> values) {
+  void assignAll(Iterable<T> values) {
     _list.clear();
     _list.addAll(values);
   }

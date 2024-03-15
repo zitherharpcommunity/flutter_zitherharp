@@ -1,6 +1,6 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
-void ensureInitialized({
+Future<void> ensureInitialized({
   String? name,
   FirebaseOptions? options,
   bool useFirebasePlugins = false,

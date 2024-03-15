@@ -1,6 +1,13 @@
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+/// You only need to call this method
+/// if you need the binding to be initialized before calling [runApp].
+///
+/// If no binding has yet been initialized,
+/// the [WidgetsFlutterBinding] class is used to create and initialize one.
+///
+/// **NOTE**: _Only available in web platform._
 Future<void> ensureInitialized({
   String? name,
   FirebaseOptions? options,

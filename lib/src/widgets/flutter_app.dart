@@ -18,7 +18,7 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
       PointerDeviceKind.unknown,
     },
   );
-      
+
   /// Creates a [FlutterApp].
   const FlutterApp({
     super.key,

@@ -10,8 +10,6 @@ export 'package:flutter/scheduler.dart' hide Flow;
 export 'package:flutter/services.dart';
 export 'package:intl/intl.dart' hide TextDirection;
 
-export '/src/exports/configs.dart'
-    if (dart.library.html) '../configs/flutter_web_config.dart';
 export '/src/exports/constants.dart';
 export '/src/exports/entities.dart';
 export '/src/exports/extensions.dart';

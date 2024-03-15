@@ -15,6 +15,7 @@ abstract base class FlutterPreferences {
   String get versionName;
 
   /// Loads and parses the [SharedPreferences] for this app from disk.
+  @mustCallSuper
   Future<void> ensureInitialized() async {
     prefs = await SharedPreferences.getInstance();
   }

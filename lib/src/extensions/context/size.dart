@@ -1,11 +1,8 @@
 part of '/src/extensions/context.dart';
 
 extension $SizeExtension on BuildContext {
-  /// The data from the closest instance of this class that encloses the given context.
-  MediaQueryData get _data => MediaQuery.of(this);
-
   /// The size of the media in logical pixels.
-  Size get _size => _data.size;
+  Size get _size => MediaQuery.sizeOf(this);
 
   /// The horizontal extent of this size.
   double get width => _size.width;
@@ -19,12 +16,16 @@ extension $SizeExtension on BuildContext {
   /// The lesser of the magnitudes of the [width] and the [height].
   double get shortestSide => _size.shortestSide;
 
-  /// The current brightness mode of the host platform.
-  Brightness get platformBrightness => _data.platformBrightness;
+  /// Returns orientation for the nearest MediaQuery ancestor
+  /// or throws an exception, if no such ancestor exists.
+  Orientation get _orientation => MediaQuery.orientationOf(this);
 
   /// Whether the device is in portrait mode.
-  bool get isPortrait => _data.orientation == Orientation.portrait;
+  bool get isPortrait => _orientation == Orientation.portrait;
 
   /// Whether the device is in landscape mode.
-  bool get isLandscape => _data.orientation == Orientation.landscape;
+  bool get isLandscape => _orientation == Orientation.landscape;
+
+  /// The current brightness mode of the host platform.
+  Brightness get platformBrightness => MediaQuery.platformBrightnessOf(this);
 }

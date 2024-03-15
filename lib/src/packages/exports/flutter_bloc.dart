@@ -1,9 +1,5 @@
 export 'package:flutter_bloc/flutter_bloc.dart'
-    show
-        RepositoryProvider,
-        BlocProvider,
-        BlocConsumer,
-        BlocListener;
+    show RepositoryProvider, BlocProvider, BlocConsumer, BlocListener;
 
 export '../flutter_bloc/base_cubit.dart';
 export '../flutter_bloc/base_state.dart';

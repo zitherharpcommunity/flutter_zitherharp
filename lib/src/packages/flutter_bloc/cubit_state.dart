@@ -34,17 +34,3 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
   @protected
   Stream<S> get stream => context.watch<C>().stream;
 }
-
-extension $CubitExtension<C extends BaseCubit<S>, S extends BaseState>
-    on BuildContext {
-  /// Obtain a value from the nearest ancestor provider of type [C].
-  C get cubit => read<C>();
-
-  /// Obtain a value from the nearest ancestor provider of type [C],
-  /// and subscribe to the provider.
-  S get state => watch<C>().state;
-
-  /// The current [stream] of [state].
-  @protected
-  Stream<S> get stream => watch<C>().stream;
-}

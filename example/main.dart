@@ -1,7 +1,6 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 void main() {
-  FlutterApp.ensureInitialized();
   runApp(const ExampleApp());
 }
 

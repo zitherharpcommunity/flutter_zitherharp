@@ -57,7 +57,7 @@ extension $FlutterRouterExtension on BuildContext {
     T? result,
     bool useRootNavigator = false,
   }) {
-    if (useRootNavigator) {
+    if (!useRootNavigator) {
       Navigator.pop(this, result);
     } else {
       GoRouter.of(this).pop(result);

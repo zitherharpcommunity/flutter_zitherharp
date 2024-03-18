@@ -9,18 +9,18 @@ abstract base class FlutterRouter {
   BlocRouter get config;
 
   /// An object to configure the underlying [Router].
-  List<GoRoute> get routes;
+  List<BlocRoute> get routes;
 
   /// A page builder for this route.
   @protected
   @nonVirtual
-  GoRoute configure<C extends BaseCubit>({
+  BlocRoute configure<C extends BaseCubit>({
     required String name,
     String? path,
     required Widget child,
     BlocRouterBuilder<C>? builder,
   }) {
-    return GoRoute(
+    return BlocRoute(
       name: name,
       path: path ?? '/$name',
       pageBuilder: (context, state) {
@@ -36,6 +36,9 @@ abstract base class FlutterRouter {
     );
   }
 }
+
+/// A route that is displayed visually above the matching parent route using the [Navigator].
+typedef BlocRoute = GoRoute;
 
 /// The route configuration for the app.
 typedef BlocRouter = GoRouter;
@@ -60,7 +63,7 @@ extension $FlutterRouterExtension on BuildContext {
     if (useRootNavigator) {
       Navigator.pop(this, result);
     } else {
-      GoRouter.of(this).pop(result);
+      BlocRouter.of(this).pop(result);
     }
   }
 
@@ -74,7 +77,7 @@ extension $FlutterRouterExtension on BuildContext {
       path: route.path,
       queryParameters: params,
     );
-    return GoRouter.of(this).go('$uri', extra: extra);
+    return BlocRouter.of(this).go('$uri', extra: extra);
   }
 
   /// The full uri of the route, e.g. `/family/f2/person/p1?filter=name#fragment`.

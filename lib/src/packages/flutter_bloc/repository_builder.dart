@@ -32,7 +32,7 @@ final class RepositoryBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// The [builder] takes the BuildContext and current state and must return a widget.
   ///
   /// This is analogous to the [builder] function in [StreamBuilder].
-  final CubitWidgetBuilder<C, S> builder;
+  final CubitValueBuilder<Widget, C, S> builder;
 
   /// Return `true` or `false` to determine whether or not to rebuild the widget with state.
   final BlocBuilderCondition<S>? buildWhen;

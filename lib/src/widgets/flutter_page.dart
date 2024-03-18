@@ -6,11 +6,20 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 abstract base class FlutterPage extends StatefulWidget {
   /// Creates a visual scaffold for Flutter Design widgets.
   const FlutterPage({super.key});
+
+  @override
+  FlutterPageState createState();
 }
 
 abstract base class FlutterPageState extends State<FlutterPage> {
   /// Which extends the height of the body to the top of the page.
   bool get extendBody => false;
+
+  /// If true, and an [buildAppBar] is specified, 
+  /// then the height of the [buildBody] is extended to include 
+  /// the height of the app bar and the top of the body 
+  /// is aligned with the top of the app bar.
+  bool get extendBodyBehindAppBar => false;
 
   /// Determines if the [Scaffold.drawer] can be opened with a drag gesture on mobile.
   ///
@@ -35,9 +44,10 @@ abstract base class FlutterPageState extends State<FlutterPage> {
       drawer: buildDrawer(),
       endDrawer: buildEndDrawer(),
       bottomSheet: buildBottomSheet(),
+      bottomNavigationBar: buildBottomNavigationBar(),
       floatingActionButton: buildFloatingActionButton(),
       extendBody: extendBody,
-      extendBodyBehindAppBar: extendBody,
+      extendBodyBehindAppBar: extendBodyBehindAppBar,
       drawerEnableOpenDragGesture: enableOpenDragGesture,
       endDrawerEnableOpenDragGesture: enableOpenDragGesture,
       floatingActionButtonLocation: floatingActionButtonLocation,
@@ -45,7 +55,7 @@ abstract base class FlutterPageState extends State<FlutterPage> {
   }
 
   /// The primary content of the scaffold.
-  Widget buildBody();
+  Widget? buildBody();
 
   /// A panel displayed to the side of the [buildBody],
   /// often hidden on mobile devices.
@@ -60,6 +70,9 @@ abstract base class FlutterPageState extends State<FlutterPage> {
 
   /// An app bar to display at the top of the scaffold.
   PreferredSizeWidget? buildAppBar() => null;
+
+  /// A bottom navigation bar to display at the bottom of the scaffold.
+  Widget? buildBottomNavigationBar() => null;
 
   /// A button displayed floating above [buildBody],
   /// in the bottom right corner.

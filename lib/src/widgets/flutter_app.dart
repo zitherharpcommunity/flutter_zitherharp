@@ -28,7 +28,7 @@ final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
 
   final C cubit;
 
-  final CubitWidgetBuilder<C, S> builder;
+  final CubitValueBuilder<Widget, C, S> builder;
 
   @override
   Widget build(BuildContext context) {

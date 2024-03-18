@@ -3,9 +3,8 @@
 A shared library used for apps of Zither Harp.
 
 ## Features
-
+- constants
 - entities
-- exports
 - extensions
 - packages
 - widgets
@@ -26,12 +25,24 @@ A shared library used for apps of Zither Harp.
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 ```
 
+### Internationalizing your apps
 - Create localization files *(.arb)* into `assets\locales` folder
 ```
 app_en.arb
 app_vi.arb
 app_zh.arb
 ...
+```
+
+> [!TIP] 
+> We recommend to use [Google ARB Editor](https://marketplace.visualstudio.com/items?itemName=Google.arb-editor) extension to edit the *.arb* files.
+
+- Config the locale files like this in your `pubspec.yaml`
+```yaml
+arb-dir: assets\locales
+use-escaping: true
+template-arb-file: app_vi.arb
+output-localization-file: app_localizations.dart
 ```
 
 - Run this command to auto-generate localization files in `.dart-tool`

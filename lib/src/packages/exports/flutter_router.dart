@@ -60,7 +60,7 @@ extension $FlutterRouterExtension on BuildContext {
     T? result,
     bool useRootNavigator = false,
   }) {
-    if (useRootNavigator) {
+    if (!useRootNavigator) {
       Navigator.pop(this, result);
     } else {
       BlocRouter.of(this).pop(result);

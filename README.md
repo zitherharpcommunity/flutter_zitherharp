@@ -37,7 +37,7 @@ app_zh.arb
 > [!TIP] 
 > We recommend to use [Google ARB Editor](https://marketplace.visualstudio.com/items?itemName=Google.arb-editor) extension to edit the *.arb* files.
 
-- Config the locale files like this in your `pubspec.yaml`
+- Config the locale files like this in your `pubspec.yaml` or create a new file named `l10n.yaml`
 ```yaml
 arb-dir: assets\locales
 use-escaping: true
@@ -46,6 +46,10 @@ output-localization-file: app_localizations.dart
 ```
 
 - Run this command to auto-generate localization files in `.dart-tool`
+```cmd
+flutter gen-l10n
+```
+or:
 ```cmd
 flutter gen-l10n --arb-dir=assets\locales
 ```

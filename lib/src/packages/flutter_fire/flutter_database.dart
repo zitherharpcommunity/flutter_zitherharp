@@ -3,10 +3,10 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 import 'package:http/http.dart' as http;
 
 abstract base class FlutterDatabase {
-  late final FirebaseDatabase _database = FirebaseDatabase.instance;
-
   @protected
   late final Map<String, dynamic> shelf = {};
+
+  late final FirebaseDatabase _database = FirebaseDatabase.instance;
 
   late final String _baseUrl = '$projectId-default-rtdb.firebaseio.com';
 

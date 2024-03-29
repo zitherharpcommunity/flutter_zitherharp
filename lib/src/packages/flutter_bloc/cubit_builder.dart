@@ -5,7 +5,7 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 /// [state] and is responsible for returning a widget which is to be rendered.
 ///
 /// This is analogous to the `builder` function in [StreamBuilder].
-typedef CubitWidgetBuilder<C extends BaseCubit<S>, S extends BaseState> = Widget
+typedef CubitValueBuilder<T, C extends BaseCubit<S>, S extends BaseState> = T
     Function(BuildContext context, C cubit, S state);
 
 /// {@template cubit_builder}
@@ -60,7 +60,7 @@ final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// The [builder] takes the [BuildContext] and current [state] must return a widget.
   ///
   /// This is analogous to the [builder] function in [StreamBuilder].
-  final CubitWidgetBuilder<C, S> builder;
+  final CubitValueBuilder<Widget, C, S> builder;
 
   @override
   Widget build(BuildContext context) {

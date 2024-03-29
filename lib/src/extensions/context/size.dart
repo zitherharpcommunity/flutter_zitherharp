@@ -10,6 +10,9 @@ extension $SizeExtension on BuildContext {
   /// The vertical extent of this size.
   double get height => _size.height;
 
+  /// The aspect ratio of this media.
+  double get aspectRatio => _size.aspectRatio;
+
   /// The greater of the magnitudes of the [width] and the [height].
   double get longestSide => _size.longestSide;
 

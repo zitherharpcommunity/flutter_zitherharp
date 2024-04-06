@@ -1,15 +1,15 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 abstract base class FlutterInfo {
-  String name(BuildContext context);
-
   Widget icon(BuildContext context);
 
-  String legalese(BuildContext context);
+  String? name(BuildContext context);
 
-  Color color();
+  String? legalese(BuildContext context);
 
-  String font();
+  Color? color();
+
+  String? font();
 
   String version();
 

@@ -15,8 +15,8 @@ abstract base class FlutterRouter {
   @protected
   @nonVirtual
   BlocRoute configure<C extends BaseCubit>({
-    required String name,
     String? path,
+    required String name,
     required Widget child,
     BlocRouterBuilder<C>? builder,
   }) {

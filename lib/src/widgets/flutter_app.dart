@@ -4,13 +4,14 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 final class FlutterApp<C extends BaseCubit<S>, S extends BaseState>
     extends StatelessWidget {
   /// The default map of keyboard shortcuts to intents for the application.
-  static final shortcuts = {
+  static final Map<ShortcutActivator, Intent> shortcuts = {
     ...WidgetsApp.defaultShortcuts,
     const SingleActivator(LogicalKeyboardKey.select): const ActivateIntent(),
   };
 
   /// The default [ScrollBehavior] for the application.
-  static final scrollBehavior = const MaterialScrollBehavior().copyWith(
+  static final ScrollBehavior scrollBehavior =
+      const MaterialScrollBehavior().copyWith(
     dragDevices: {
       PointerDeviceKind.mouse,
       PointerDeviceKind.touch,

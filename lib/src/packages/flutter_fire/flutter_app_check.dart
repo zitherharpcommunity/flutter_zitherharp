@@ -3,12 +3,12 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// The entry point for accessing [FirebaseAppCheck].
 sealed class FlutterAppCheck {
-  static final _appCheck = FirebaseAppCheck.instance;
+  static final FirebaseAppCheck _appCheck = FirebaseAppCheck.instance;
 
-  static const _appleProvider =
+  static const AppleProvider _appleProvider =
       kDebugMode ? AppleProvider.debug : AppleProvider.deviceCheck;
 
-  static const _androidProvider =
+  static const AndroidProvider _androidProvider =
       kDebugMode ? AndroidProvider.debug : AndroidProvider.playIntegrity;
 
   static dynamic _getWebProvider(
@@ -25,9 +25,9 @@ sealed class FlutterAppCheck {
         : ReCaptchaEnterpriseProvider(recaptchaEnterpriseSiteKey);
   }
 
-  static const recaptchaSiteKey = 'recaptchaSiteKey';
+  static const String recaptchaSiteKey = 'recaptchaSiteKey';
 
-  static const recaptchaEnterpriseSiteKey = 'recaptchaEnterpriseSiteKey';
+  static const String recaptchaEnterpriseSiteKey = 'recaptchaEnterpriseSiteKey';
 
   /// Activates the [FirebaseAppCheck] service.
   static Future<void> ensureInitialized({

@@ -26,6 +26,6 @@ Future<void> ensureInitialized({
   await FlutterRemoteConfig.ensureInitialized();
 }
 
-const _recaptchaSiteKey = FlutterAppCheck.recaptchaSiteKey;
+const String _recaptchaSiteKey = FlutterAppCheck.recaptchaSiteKey;
 
-const _recaptchaEnterpriseSiteKey = FlutterAppCheck.recaptchaEnterpriseSiteKey;
+const String _recaptchaEnterpriseSiteKey = FlutterAppCheck.recaptchaEnterpriseSiteKey;

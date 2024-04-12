@@ -4,10 +4,11 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 /// The entry point for accessing a [FirebaseCrashlytics].
 sealed class FlutterCrashlytics {
   /// An [FirebaseCrashlytics] instance using the default [FirebaseApp].
-  static final _crashlytics = FirebaseCrashlytics.instance;
+  static final FirebaseCrashlytics _crashlytics = FirebaseCrashlytics.instance;
 
   /// The [PlatformDispatcher] singleton.
-  static final _platformDispatcher = PlatformDispatcher.instance;
+  static final PlatformDispatcher _platformDispatcher =
+      PlatformDispatcher.instance;
 
   /// Submits a Crashlytics report of a fatal error caught by the Flutter framework.
   static Future<void> ensureInitialized() async {

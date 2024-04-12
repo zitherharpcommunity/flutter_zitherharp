@@ -21,7 +21,7 @@ abstract base class FlutterDatabase {
   @nonVirtual
   Future<List<T>> get<T>({
     required String name,
-    required T Function(String id, Map<String, dynamic> json) builder,
+    required JsonParser<T> parser,
   }) async {
     if (shelf.containsKey(name)) return shelf[name];
     Map data;
@@ -35,6 +35,8 @@ abstract base class FlutterDatabase {
       final snapshot = await _database.ref(name).get();
       data = snapshot.value as Map<Object?, Object?>;
     }
-    return data.entries.map((e) => builder.call(e.key, e.value)).toList();
+    return data.entries.map((e) => parser.call(e.key, e.value)).toList();
   }
 }
+
+typedef JsonParser<T> = T Function(String id, Map<String, dynamic> json);

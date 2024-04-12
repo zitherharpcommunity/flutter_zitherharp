@@ -3,7 +3,8 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// The entry point for accessing Remote Config.
 sealed class FlutterRemoteConfig {
-  static final _remoteConfig = FirebaseRemoteConfig.instance;
+  static final FirebaseRemoteConfig _remoteConfig =
+      FirebaseRemoteConfig.instance;
 
   static Future<void> ensureInitialized() async {
     await _remoteConfig.setConfigSettings(

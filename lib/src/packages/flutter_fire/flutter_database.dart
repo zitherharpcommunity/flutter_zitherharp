@@ -12,7 +12,7 @@ abstract base class FlutterDatabase {
 
   FlutterDatabase() {
     _database.setLoggingEnabled(kDebugMode);
-    _database.setPersistenceEnabled(kIsMobile);
+    if (kIsMobile) _database.setPersistenceEnabled(true);
   }
 
   String get projectId;

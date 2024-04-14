@@ -77,7 +77,7 @@ extension $FlutterRouterExtension on BuildContext {
       path: route.path,
       queryParameters: params,
     );
-    return BlocRouter.of(this).go('$uri', extra: extra);
+    BlocRouter.of(this).push('$uri', extra: extra);
   }
 
   /// The full uri of the route, e.g. `/family/f2/person/p1?filter=name#fragment`.

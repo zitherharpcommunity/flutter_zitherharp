@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 import 'package:go_router/go_router.dart';
 
@@ -18,13 +19,16 @@ abstract base class FlutterRouter {
     String? path,
     required String name,
     required Widget child,
+    List<BlocRoute>? routes,
     BlocRouterBuilder<C>? builder,
   }) {
     return BlocRoute(
       name: name,
       path: path ?? '/$name',
+      routes: routes ?? const [],
       pageBuilder: (context, state) {
         return NoTransitionPage(
+          name: name,
           child: builder == null
               ? child
               : BlocProvider(
@@ -77,7 +81,12 @@ extension $FlutterRouterExtension on BuildContext {
       path: route.path,
       queryParameters: params,
     );
-    BlocRouter.of(this).push('$uri', extra: extra);
+    final router = BlocRouter.of(this);
+    if (kIsWeb) {
+      router.go('$uri', extra: extra);
+    } else {
+      router.push('$uri', extra: extra);
+    }
   }
 
   /// The full uri of the route, e.g. `/family/f2/person/p1?filter=name#fragment`.

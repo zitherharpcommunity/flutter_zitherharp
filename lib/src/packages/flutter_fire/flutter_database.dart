@@ -36,7 +36,8 @@ abstract base class FlutterDatabase {
       final snapshot = await _database.ref(name).get();
       data = snapshot.value as Map<dynamic, dynamic>;
     }
-    return data.entries.map((e) => parser.call(e.key, e.value)).toList();
+    return shelf[name] =
+        data.entries.map((e) => parser.call(e.key, e.value)).toList();
   }
 }
 

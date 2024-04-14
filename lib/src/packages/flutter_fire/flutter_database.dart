@@ -12,7 +12,7 @@ abstract base class FlutterDatabase {
 
   FlutterDatabase() {
     _database.setLoggingEnabled(kDebugMode);
-    if (kIsMobile) _database.setPersistenceEnabled(true);
+    if (!kIsWeb) _database.setPersistenceEnabled(true);
   }
 
   String get projectId;
@@ -20,12 +20,13 @@ abstract base class FlutterDatabase {
   @protected
   @nonVirtual
   Future<List<T>> get<T>({
+    bool cache = true,
     required String name,
     required JsonParser<T> parser,
   }) async {
-    if (shelf.containsKey(name)) return shelf[name];
+    if (cache && shelf.containsKey(name)) return shelf[name];
     Map data;
-    if (kIsDesktop) {
+    if (!cache) {
       final response = await http.get(
         Uri.parse('https://$_baseUrl/$name.json'),
       );
@@ -33,7 +34,7 @@ abstract base class FlutterDatabase {
       data = Map.from(jsonDecode(response.body));
     } else {
       final snapshot = await _database.ref(name).get();
-      data = snapshot.value as Map<Object?, Object?>;
+      data = snapshot.value as Map<dynamic, dynamic>;
     }
     return data.entries.map((e) => parser.call(e.key, e.value)).toList();
   }

@@ -15,12 +15,12 @@ abstract base class FlutterRouter {
   /// A page builder for this route.
   @protected
   @nonVirtual
-  BlocRoute configure<C extends BaseCubit>({
+  BlocRoute configure({
     String? path,
     required String name,
     required Widget child,
     List<BlocRoute>? routes,
-    BlocRouterBuilder<C>? builder,
+    BlocRouterBuilder<BaseCubit>? builder,
   }) {
     return BlocRoute(
       name: name,

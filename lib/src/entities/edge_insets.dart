@@ -24,6 +24,10 @@ const EdgeInsets edgeInsetsHorizontal8 = EdgeInsets.symmetric(horizontal: 8);
 /// An edge insets with only left is `16` and right is `8`.
 const EdgeInsets edgeInsetsLeft16Right8 = EdgeInsets.only(left: 16, right: 8);
 
+/// An edge insets with vertical offsets is `8` and horizontal offsets is `16`.
+const EdgeInsets edgeInsetsVertical8Horizontal16 =
+    EdgeInsets.symmetric(vertical: 8, horizontal: 16);
+
 /// An edge insets with vertical offsets is `12` and horizontal offsets is `16`.
 const EdgeInsets edgeInsetsVertical12Horizontal16 =
     EdgeInsets.symmetric(vertical: 12, horizontal: 16);

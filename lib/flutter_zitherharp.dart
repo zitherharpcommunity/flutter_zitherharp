@@ -15,6 +15,7 @@ export 'package:quick_actions/quick_actions.dart';
 
 export '/src/exports/constants.dart';
 export '/src/exports/entities.dart';
+export '/src/exports/enums.dart';
 export '/src/exports/extensions.dart';
 export '/src/exports/packages.dart';
 export '/src/exports/widgets.dart';

@@ -45,13 +45,19 @@ template-arb-file: app_vi.arb
 output-localization-file: app_localizations.dart
 ```
 
-- Run this command to auto-generate localization files in `.dart-tool`
+- Localization files:
 ```cmd
 flutter gen-l10n
 ```
-or:
+
+- Launcher icon:
 ```cmd
-flutter gen-l10n --arb-dir=assets\locales
+dart run flutter_launcher_icons
+```
+
+- Splash screen:
+```cmd
+dart run flutter_native_splash:create
 ```
 
 ## Additional information

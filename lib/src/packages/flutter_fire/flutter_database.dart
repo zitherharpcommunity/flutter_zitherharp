@@ -25,7 +25,7 @@ abstract base class FlutterDatabase {
     required JsonParser<T> parser,
   }) async {
     if (cache && shelf.containsKey(name)) return shelf[name];
-    Map data;
+    Map<dynamic, dynamic> data;
     if (!cache) {
       final response = await http.get(
         Uri.parse('https://$_baseUrl/$name.json'),

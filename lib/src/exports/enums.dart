@@ -1,0 +1,1 @@
+export '../enums/locales.dart';

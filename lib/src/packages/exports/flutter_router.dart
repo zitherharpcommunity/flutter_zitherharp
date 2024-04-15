@@ -5,55 +5,47 @@ import 'package:go_router/go_router.dart';
 abstract base class FlutterRouter {
   const FlutterRouter();
 
-  /// Default constructor to configure a [BlocRouter]
+  /// Default constructor to configure a [GoRouter]
   /// with a routes builder and an error page builder.
-  BlocRouter get config;
+  GoRouter get config;
 
   /// An object to configure the underlying [Router].
-  List<BlocRoute> get routes;
+  List<GoRoute> get routes;
 
   /// A page builder for this route.
   @protected
   @nonVirtual
-  BlocRoute configure({
+  GoRoute configure<C extends BaseCubit>({
     String? path,
     required String name,
-    required Widget child,
-    List<BlocRoute>? routes,
-    BlocRouterBuilder<BaseCubit>? builder,
+    required BlocRouterBuilder builder,
   }) {
-    return BlocRoute(
+    return GoRoute(
       name: name,
       path: path ?? '/$name',
-      routes: routes ?? const [],
       pageBuilder: (context, state) {
         return NoTransitionPage(
           name: name,
-          child: builder == null
-              ? child
-              : BlocProvider(
-                  create: (context) => builder.call(context, state),
-                  child: child,
-                ),
+          child: builder.call(context, state),
         );
       },
     );
   }
 }
 
-/// A route that is displayed visually above the matching parent route using the [Navigator].
+/// A route that is displayed visually above 
+/// the matching parent route using the [Navigator].
 typedef BlocRoute = GoRoute;
 
 /// The route configuration for the app.
 typedef BlocRouter = GoRouter;
 
 /// The function to build route configuration for the app.
-typedef BlocRouterBuilder<C extends BaseCubit> = C Function(
-  BuildContext context,
-  GoRouterState state,
-);
+typedef BlocRouterBuilder = GoRouterWidgetBuilder;
 
-/// [BlocRouter] extension to add navigation function to a [BuildContext] object.
+typedef BlocRouterProvider<C extends BaseCubit> = BlocProvider<C>;
+
+/// [GoRouter] extension to add navigation function to a [BuildContext] object.
 extension $FlutterRouterExtension on BuildContext {
   /// Pop the top-most route off the current screen.
   ///
@@ -67,7 +59,7 @@ extension $FlutterRouterExtension on BuildContext {
     if (!useRootNavigator) {
       Navigator.pop(this, result);
     } else {
-      BlocRouter.of(this).pop(result);
+      GoRouter.of(this).pop(result);
     }
   }
 
@@ -81,7 +73,7 @@ extension $FlutterRouterExtension on BuildContext {
       path: route.path,
       queryParameters: params,
     );
-    final router = BlocRouter.of(this);
+    final router = GoRouter.of(this);
     if (kIsWeb) {
       router.go('$uri', extra: extra);
     } else {

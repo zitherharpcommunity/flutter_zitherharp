@@ -14,7 +14,7 @@ sealed class Locales {
 
   /// Chinese.
   static const Locale zh = Locale('zh');
-  
+
   /// English (US).
   static const Locale en_US = Locale('en', 'US');
 

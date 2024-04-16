@@ -28,4 +28,5 @@ Future<void> ensureInitialized({
 
 const String _recaptchaSiteKey = FlutterAppCheck.recaptchaSiteKey;
 
-const String _recaptchaEnterpriseSiteKey = FlutterAppCheck.recaptchaEnterpriseSiteKey;
+const String _recaptchaEnterpriseSiteKey =
+    FlutterAppCheck.recaptchaEnterpriseSiteKey;

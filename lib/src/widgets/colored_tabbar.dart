@@ -1,7 +1,8 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// A widget that displays a horizontal row of [Tab]s with a specified [Color].
-final class ColoredTabBar extends StatelessWidget implements PreferredSizeWidget {
+final class ColoredTabBar extends StatelessWidget
+    implements PreferredSizeWidget {
   /// Creates a tab bar that paints its area with the specified [Color].
   const ColoredTabBar({
     super.key,

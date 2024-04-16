@@ -33,7 +33,7 @@ abstract base class FlutterRouter {
   }
 }
 
-/// A route that is displayed visually above 
+/// A route that is displayed visually above
 /// the matching parent route using the [Navigator].
 typedef BlocRoute = GoRoute;
 

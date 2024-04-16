@@ -2,7 +2,7 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// An [IconButton] to display in a row after the title of [AppBar].
 final class ActionButton extends StatelessWidget {
-  /// Creates an [IconButton] to display 
+  /// Creates an [IconButton] to display
   /// in a row after the title of [AppBar].
   const ActionButton({
     super.key,

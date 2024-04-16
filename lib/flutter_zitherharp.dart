@@ -3,7 +3,6 @@ library flutter_zitherharp;
 export 'dart:async';
 export 'dart:convert';
 
-export 'package:cached_network_image/cached_network_image.dart';
 export 'package:feedback/feedback.dart';
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';

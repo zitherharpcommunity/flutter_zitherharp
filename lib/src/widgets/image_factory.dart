@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// The type of an [ImageFactory].
@@ -9,6 +10,17 @@ enum ImageType {
   memory,
   network,
 }
+
+typedef ImageBuilder = Widget Function(
+  BuildContext context,
+  ImageProvider provider,
+);
+
+typedef HolderBuilder = Widget Function(
+  BuildContext context,
+  Object value1,
+  Object? value2,
+);
 
 /// A widget that displays an [Image].
 final class ImageFactory extends StatelessWidget {
@@ -23,6 +35,10 @@ final class ImageFactory extends StatelessWidget {
   /// This allows a set of images to be identified and for the precise image
   /// to later be resolved based on the environment, e.g. the device pixel ratio.
   final ImageProvider image;
+
+  /// Whether the image should be downloaded from the internet
+  /// and keep them in the cache directory or not.
+  final bool cache;
 
   /// How to inscribe the image into the space allocated during layout.
   ///
@@ -54,6 +70,16 @@ final class ImageFactory extends StatelessWidget {
   /// and height if the exact image dimensions are not known in advance.
   final double? height;
 
+  final Widget Function(BuildContext context, ImageProvider provider)? builder;
+
+  /// A builder that specifies the widget to display
+  /// to the user while an image is still loading.
+  final HolderBuilder? placeholder;
+
+  /// A builder function that is called
+  /// if an error occurs during image loading.
+  final HolderBuilder? errorholder;
+
   const ImageFactory._(
     this.image, {
     required this.path,
@@ -61,6 +87,10 @@ final class ImageFactory extends StatelessWidget {
     this.fit,
     this.width,
     this.height,
+    this.cache = true,
+    this.builder,
+    this.errorholder,
+    this.placeholder,
   });
 
   /// Creates an object that decodes an [ImageFactory] as an image.
@@ -69,12 +99,17 @@ final class ImageFactory extends StatelessWidget {
     BoxFit? fit,
     double? width,
     double? height,
+    bool cache = true,
+    ImageBuilder? builder,
+    HolderBuilder? placeholder,
+    HolderBuilder? errorholder,
   }) {
     if (path.startsWith('assets/')) {
       return ImageFactory.asset(
         path,
         width: width,
         height: height,
+        errorholder: errorholder,
       );
     }
     if (path.startsWith('file://')) {
@@ -82,6 +117,7 @@ final class ImageFactory extends StatelessWidget {
         path,
         width: width,
         height: height,
+        errorholder: errorholder,
       );
     }
     if (path.startsWith('http://') || path.startsWith('https://')) {
@@ -89,12 +125,16 @@ final class ImageFactory extends StatelessWidget {
         path,
         width: width,
         height: height,
+        cache: cache,
+        errorholder: errorholder,
+        placeholder: placeholder,
       );
     }
     return ImageFactory.memory(
       path,
       width: width,
       height: height,
+      errorholder: errorholder,
     );
   }
 
@@ -104,12 +144,14 @@ final class ImageFactory extends StatelessWidget {
     BoxFit? fit,
     double? width,
     double? height,
+    HolderBuilder? errorholder,
   }) : this._(
           AssetImage(path),
           path: path,
           type: ImageType.asset,
           width: width,
           height: height,
+          errorholder: errorholder,
         );
 
   /// Creates an object that decodes a [File] as an image.
@@ -118,40 +160,54 @@ final class ImageFactory extends StatelessWidget {
     BoxFit? fit,
     double? width,
     double? height,
+    HolderBuilder? errorholder,
   }) : this._(
           FileImage(File(path)),
           path: path,
           type: ImageType.file,
           width: width,
           height: height,
+          errorholder: errorholder,
         );
 
   /// Creates an object that fetches the image at the given [path].
   ImageFactory.memory(
-    String path, {
+    String data, {
     BoxFit? fit,
     double? width,
     double? height,
+    HolderBuilder? errorholder,
   }) : this._(
-          MemoryImage(decode(path)),
-          path: path,
-          type: ImageType.file,
+          MemoryImage(_decode(data)),
+          path: data,
+          type: ImageType.memory,
           width: width,
           height: height,
+          errorholder: errorholder,
         );
 
   /// Creates an object that fetches the image at the given [path].
   ImageFactory.network(
-    String path, {
+    String url, {
     BoxFit? fit,
     double? width,
     double? height,
+    bool cache = true,
+    ImageBuilder? builder,
+    HolderBuilder? placeholder,
+    HolderBuilder? errorholder,
   }) : this._(
-          NetworkImage(path),
-          path: path,
-          type: ImageType.file,
+          cache
+              ? CachedNetworkImageProvider(url)
+              : NetworkImage(url) as ImageProvider,
+          path: url,
+          type: ImageType.network,
+          cache: cache,
           width: width,
           height: height,
+          builder: builder,
+          errorholder: errorholder,
+          placeholder: placeholder,
         );
 
   @override
@@ -163,6 +219,7 @@ final class ImageFactory extends StatelessWidget {
           fit: fit,
           width: width,
           height: height,
+          errorBuilder: errorholder,
         );
       case ImageType.asset:
         return Image.asset(
@@ -170,24 +227,39 @@ final class ImageFactory extends StatelessWidget {
           fit: fit,
           width: width,
           height: height,
+          errorBuilder: errorholder,
         );
       case ImageType.network:
+        if (cache) {
+          return CachedNetworkImage(
+            imageUrl: path,
+            fit: fit,
+            width: width,
+            height: height,
+            imageBuilder: builder,
+            errorWidget: errorholder,
+            progressIndicatorBuilder: placeholder,
+          );
+        }
         return Image.network(
           path,
           fit: fit,
           width: width,
           height: height,
+          errorBuilder: errorholder,
+          loadingBuilder: placeholder,
         );
       case ImageType.memory:
         return Image.memory(
-          decode(path),
+          _decode(path),
           fit: fit,
           width: width,
           height: height,
+          errorBuilder: errorholder,
         );
     }
   }
 
   /// Decodes the given [data] as a [Uint8List].
-  static Uint8List decode(String data) => Uint8List.fromList(data.codeUnits);
+  static Uint8List _decode(String data) => Uint8List.fromList(data.codeUnits);
 }

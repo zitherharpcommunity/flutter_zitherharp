@@ -15,7 +15,7 @@ abstract base class FlutterRouter {
   /// A page builder for this route.
   @protected
   @nonVirtual
-  GoRoute configure<C extends BaseCubit>({
+  GoRoute configure({
     String? path,
     required String name,
     required BlocRouterBuilder builder,

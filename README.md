@@ -5,6 +5,7 @@ A shared library used for apps of Zither Harp.
 ## Features
 - constants
 - entities
+- enums
 - extensions
 - packages
 - widgets

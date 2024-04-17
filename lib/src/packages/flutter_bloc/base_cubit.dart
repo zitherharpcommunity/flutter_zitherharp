@@ -26,6 +26,7 @@ abstract base class BaseCubit<S extends BaseState> extends Cubit<S> {
       'onError: $stackTrace',
       name: '$runtimeType',
       error: error,
+      stackTrace: stackTrace,
     );
   }
 }

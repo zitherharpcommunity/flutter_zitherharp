@@ -48,13 +48,7 @@ final class BlocBuilder2<B1 extends BaseCubit<S1>, S1 extends BaseState,
         return BlocBuilder<B2, S2>(
           bloc: bloc2,
           buildWhen: buildWhen2,
-          builder: (context, state2) {
-            return builder(
-              context,
-              state1,
-              state2,
-            );
-          },
+          builder: (context, state2) => builder(context, state1, state2),
         );
       },
     );

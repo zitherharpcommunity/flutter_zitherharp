@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// A base [Cubit] of all usecases in whole app.
-abstract base class BaseCubit<S extends BaseState> extends Cubit<S> {
+abstract base class BaseCubit<S extends BaseState> extends Cubit<S>
+    with Diagnosticable {
   @protected
   final BuildContext context;
 
@@ -23,7 +24,7 @@ abstract base class BaseCubit<S extends BaseState> extends Cubit<S> {
   void onError(Object error, StackTrace stackTrace) {
     super.onError(error, stackTrace);
     developer.log(
-      'onError: $stackTrace',
+      'onError: $error',
       name: '$runtimeType',
       error: error,
       stackTrace: stackTrace,

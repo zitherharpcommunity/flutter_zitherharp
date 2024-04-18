@@ -1,8 +1,9 @@
+
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// A base [State] of all usecases in whole app.
 @immutable
-abstract base class BaseState with Diagnosticable {
+abstract base class BaseState extends Equatable with Diagnosticable {
   const BaseState({
     this.connectionState = ConnectionState.none,
   });

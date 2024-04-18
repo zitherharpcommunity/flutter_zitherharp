@@ -71,7 +71,7 @@ final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
         return builder(
           context,
           context.read<C>(),
-          listen ? state : context.watch<C>().state,
+          !listen ? state : context.watch<C>().state,
         );
       },
     );

@@ -3,6 +3,7 @@ library flutter_zitherharp;
 export 'dart:async';
 export 'dart:convert';
 
+export 'package:equatable/equatable.dart';
 export 'package:feedback/feedback.dart';
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';

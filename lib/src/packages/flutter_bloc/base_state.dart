@@ -1,4 +1,3 @@
-
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// A base [State] of all usecases in whole app.
@@ -24,5 +23,5 @@ abstract base class BaseState extends Equatable with Diagnosticable {
   bool get isActive => connectionState == ConnectionState.active;
 
   @protected
-  BaseState copyWith() => this;
+  BaseState copyWith();
 }

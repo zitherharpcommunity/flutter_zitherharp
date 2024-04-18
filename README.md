@@ -2,7 +2,7 @@
 
 A shared library used for apps of Zither Harp.
 
-## Features
+## Structure
 - constants
 - entities
 - enums
@@ -46,12 +46,13 @@ template-arb-file: app_vi.arb
 output-localization-file: app_localizations.dart
 ```
 
-- Localization files:
+- Run this command to generate the localization files:
 ```cmd
 flutter gen-l10n
 ```
 
-- Launcher icon:
+### Add launcher icon and splash screen
+- App icon:
 ```cmd
 dart run flutter_launcher_icons
 ```

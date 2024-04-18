@@ -1,3 +1,4 @@
+/// A shared library used for apps of **Zither Harp**.
 library flutter_zitherharp;
 
 export 'dart:async';

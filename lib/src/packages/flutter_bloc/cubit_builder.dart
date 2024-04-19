@@ -26,6 +26,8 @@ final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
     this.cubit,
     this.listen = false,
     this.buildWhen,
+    this.listenWhen,
+    this.listener,
     required this.builder,
   });
 
@@ -55,6 +57,11 @@ final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// [buildWhen] is optional and if omitted, it will default to `true`.
   final BlocBuilderCondition<S>? buildWhen;
 
+  /// Takes the previous state and the current state 
+  /// and is responsible for returning a [bool] which determines whether 
+  /// or not to call [listener] of [BlocConsumer] with the current state.
+  final BlocBuilderCondition<S>? listenWhen;
+
   /// The [builder] function which will be invoked on each widget build.
   ///
   /// The [builder] takes the [BuildContext] and current [state] must return a widget.
@@ -62,13 +69,25 @@ final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// This is analogous to the [builder] function in [StreamBuilder].
   final CubitValueBuilder<Widget, C, S> builder;
 
+  /// Takes the [BuildContext] along with the [cubit] state
+  /// and is responsible for executing in response to state changes.
+  final CubitValueBuilder<void, C, S>? listener;
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<C, S>(
+    return BlocConsumer<C, S>(
       key: key,
       buildWhen: buildWhen,
+      listenWhen: listenWhen,
+      listener: (context, state) {
+        return listener?.call(
+          context,
+          context.read<C>(),
+          !listen ? state : context.watch<C>().state,
+        );
+      },
       builder: (context, state) {
-        return builder(
+        return builder.call(
           context,
           context.read<C>(),
           !listen ? state : context.watch<C>().state,

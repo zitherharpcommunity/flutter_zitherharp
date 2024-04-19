@@ -84,6 +84,9 @@ extension $FlutterRouterExtension on BuildContext {
   /// The full uri of the route, e.g. `/family/f2/person/p1?filter=name#fragment`.
   String get path => '${GoRouterState.of(this).uri}';
 
+  /// An extra object to pass along with the navigation.
+  Object? get extra => GoRouterState.of(this).extra;
+
   /// Whether this route is the most route on the navigator.
   void popAll() => Navigator.popUntil(this, (route) => route.isFirst);
 }

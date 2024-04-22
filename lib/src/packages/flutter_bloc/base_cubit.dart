@@ -1,5 +1,3 @@
-import 'dart:developer' as developer;
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
@@ -10,7 +8,7 @@ abstract base class BaseCubit<S extends BaseState> extends Cubit<S>{
   @override
   void onChange(Change<S> change) {
     super.onChange(change);
-    developer.log(
+    FlutterLogger.cyan.print(
       '$change',
       name: '$runtimeType',
     );
@@ -18,12 +16,21 @@ abstract base class BaseCubit<S extends BaseState> extends Cubit<S>{
 
   @override
   void onError(Object error, StackTrace stackTrace) {
-    developer.log(
+    FlutterLogger.red.print(
       'Error { $error }',
       name: '$runtimeType',
       error: error,
       stackTrace: stackTrace,
     );
     super.onError(error, stackTrace);
+  }
+
+  @override
+  Future<void> close() async {
+    super.close();
+    FlutterLogger.magenta.print(
+      'Closed',
+      name: '$runtimeType',
+    );
   }
 }

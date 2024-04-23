@@ -22,6 +22,16 @@ typedef HolderBuilder = Widget Function(
   Object? value2,
 );
 
+bool _isFile(String path) => path.startsWith('file://');
+
+bool _isAsset(String name) => name.startsWith('assets/');
+
+bool _isNetwork(String url) =>
+    url.startsWith('http://') || url.startsWith('https://');
+
+/// Decodes the given [data] as a [Uint8List].
+Uint8List _decode(String data) => Uint8List.fromList(data.codeUnits);
+
 /// A widget that displays an [Image].
 final class ImageFactory extends StatelessWidget {
   /// The data of an [ImageFactory].
@@ -104,7 +114,7 @@ final class ImageFactory extends StatelessWidget {
     HolderBuilder? placeholder,
     HolderBuilder? errorholder,
   }) {
-    if (path.startsWith('assets/')) {
+    if (_isAsset(path)) {
       return ImageFactory.asset(
         path,
         width: width,
@@ -112,7 +122,7 @@ final class ImageFactory extends StatelessWidget {
         errorholder: errorholder,
       );
     }
-    if (path.startsWith('file://')) {
+    if (_isFile(path)) {
       return ImageFactory.file(
         path,
         width: width,
@@ -120,7 +130,7 @@ final class ImageFactory extends StatelessWidget {
         errorholder: errorholder,
       );
     }
-    if (path.startsWith('http://') || path.startsWith('https://')) {
+    if (_isNetwork(path)) {
       return ImageFactory.network(
         path,
         width: width,
@@ -140,14 +150,14 @@ final class ImageFactory extends StatelessWidget {
 
   /// Creates an object that fetches an image from an asset bundle.
   ImageFactory.asset(
-    String path, {
+    String name, {
     BoxFit? fit,
     double? width,
     double? height,
     HolderBuilder? errorholder,
   }) : this._(
-          AssetImage(path),
-          path: path,
+          AssetImage(name),
+          path: name,
           type: ImageType.asset,
           width: width,
           height: height,
@@ -259,7 +269,16 @@ final class ImageFactory extends StatelessWidget {
         );
     }
   }
+}
 
-  /// Decodes the given [data] as a [Uint8List].
-  static Uint8List _decode(String data) => Uint8List.fromList(data.codeUnits);
+sealed class ImageFactoryProvider {
+  static ImageProvider file(String path) => FileImage(File(path));
+
+  static ImageProvider asset(String name) => AssetImage(name);
+
+  static ImageProvider memory(String data) => MemoryImage(_decode(data));
+
+  static ImageProvider network(String url, {bool cache = true}) => cache
+      ? CachedNetworkImageProvider(url)
+      : NetworkImage(url) as ImageProvider;
 }

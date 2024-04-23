@@ -26,6 +26,7 @@ abstract base class FlutterRouter {
       pageBuilder: (context, state) {
         return NoTransitionPage(
           name: name,
+          key: state.pageKey,
           child: builder.call(context, state),
         );
       },

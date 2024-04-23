@@ -57,8 +57,8 @@ final class CubitBuilder<C extends BaseCubit<S>, S extends BaseState>
   /// [buildWhen] is optional and if omitted, it will default to `true`.
   final BlocBuilderCondition<S>? buildWhen;
 
-  /// Takes the previous state and the current state 
-  /// and is responsible for returning a [bool] which determines whether 
+  /// Takes the previous state and the current state
+  /// and is responsible for returning a [bool] which determines whether
   /// or not to call [listener] of [BlocConsumer] with the current state.
   final BlocBuilderCondition<S>? listenWhen;
 

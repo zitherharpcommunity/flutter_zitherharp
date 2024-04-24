@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// You only need to call this method
@@ -11,6 +12,7 @@ Future<void> ensureInitialized({
   bool useFirebasePlugins = false,
   Map<String, dynamic>? parameters,
 }) async {
+  Bloc.observer = CubitObserver();
   WidgetsFlutterBinding.ensureInitialized();
   if (name == null && options == null) return;
   await Firebase.initializeApp(name: name, options: options);

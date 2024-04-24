@@ -20,7 +20,7 @@ enum FlutterLogger {
   void print(
     String message, {
     DateTime? time,
-    String name = '',
+    String? name,
     Zone? zone,
     Object? error,
     int? sequenceNumber,
@@ -28,7 +28,7 @@ enum FlutterLogger {
   }) {
     return log(
       '\x1B[${level}m$message\x1B[0m',
-      name: name,
+      name: name ?? '$runtimeType',
       time: time,
       zone: zone,
       error: error,

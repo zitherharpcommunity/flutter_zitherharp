@@ -5,22 +5,22 @@ import 'package:go_router/go_router.dart';
 abstract base class FlutterRouter {
   const FlutterRouter();
 
-  /// Default constructor to configure a [GoRouter]
+  /// Default constructor to configure a [BlocRouter]
   /// with a routes builder and an error page builder.
-  GoRouter get config;
+  BlocRouter get config;
 
-  /// An object to configure the underlying [Router].
-  List<GoRoute> get routes;
+  /// An object to configure the underlying [BlocRouter].
+  List<BlocRoute> get routes;
 
   /// A page builder for this route.
   @protected
   @nonVirtual
-  GoRoute configure({
+  BlocRoute configure({
     String? path,
     required String name,
     required BlocRouterBuilder builder,
   }) {
-    return GoRoute(
+    return BlocRoute(
       name: name,
       path: path ?? '/$name',
       pageBuilder: (context, state) {
@@ -44,6 +44,7 @@ typedef BlocRouter = GoRouter;
 /// The function to build route configuration for the app.
 typedef BlocRouterBuilder = GoRouterWidgetBuilder;
 
+/// {@macro bloc_provider}
 typedef BlocRouterProvider<C extends BaseCubit> = BlocProvider<C>;
 
 /// [GoRouter] extension to add navigation function to a [BuildContext] object.
@@ -60,7 +61,7 @@ extension $FlutterRouterExtension on BuildContext {
     if (!useRootNavigator) {
       Navigator.pop(this, result);
     } else {
-      GoRouter.of(this).pop(result);
+      BlocRouter.of(this).pop(result);
     }
   }
 
@@ -74,7 +75,7 @@ extension $FlutterRouterExtension on BuildContext {
       path: route.path,
       queryParameters: params,
     );
-    final router = GoRouter.of(this);
+    final router = BlocRouter.of(this);
     if (kIsWeb) {
       router.go('$uri', extra: extra);
     } else {

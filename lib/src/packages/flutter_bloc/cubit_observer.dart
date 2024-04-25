@@ -6,7 +6,7 @@ final class CubitObserver extends BlocObserver {
   void onCreate(BlocBase bloc) {
     super.onCreate(bloc);
     FlutterLogger.green.print(
-      'Created',
+      'Create',
       name: '${bloc.runtimeType}',
     );
   }
@@ -34,8 +34,8 @@ final class CubitObserver extends BlocObserver {
   @override
   void onClose(BlocBase bloc) {
     FlutterLogger.magenta.print(
-      'Closed',
-      name: '$runtimeType',
+      'Close',
+      name: '${bloc.runtimeType}',
     );
     super.onClose(bloc);
   }

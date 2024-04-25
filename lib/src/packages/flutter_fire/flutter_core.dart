@@ -13,7 +13,6 @@ Future<void> ensureInitialized({
   Map<String, dynamic>? parameters,
 }) async {
   Bloc.observer = CubitObserver();
-  WidgetsFlutterBinding.ensureInitialized();
   if (name == null && options == null) return;
   await Firebase.initializeApp(name: name, options: options);
   if (useFirebasePlugins == false) return;

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+/// A class for observing the behavior of [Cubit] instances.
 final class CubitObserver extends BlocObserver {
   @override
   void onCreate(BlocBase bloc) {

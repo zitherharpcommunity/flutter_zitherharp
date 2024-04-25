@@ -8,8 +8,12 @@ final class ActionButton extends StatelessWidget {
     super.key,
     this.icon,
     this.tooltip,
+    this.visible = true,
     this.onPressed,
   });
+
+  /// Switches between showing the button or hiding it.
+  final bool visible;
 
   /// The icon to display inside the button.
   final IconData? icon;
@@ -22,15 +26,18 @@ final class ActionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      padding: EdgeInsets.zero,
-      visualDensity: const VisualDensity(
-        vertical: dimension4,
-        horizontal: dimension4,
+    return Visibility(
+      visible: visible,
+      child: IconButton(
+        padding: EdgeInsets.zero,
+        visualDensity: const VisualDensity(
+          vertical: dimension4,
+          horizontal: dimension4,
+        ),
+        icon: Icon(icon),
+        tooltip: tooltip,
+        onPressed: onPressed,
       ),
-      icon: Icon(icon),
-      tooltip: tooltip,
-      onPressed: onPressed,
     );
   }
 }

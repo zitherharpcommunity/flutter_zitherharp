@@ -6,6 +6,7 @@ export 'dart:convert';
 
 export 'package:equatable/equatable.dart';
 export 'package:feedback/feedback.dart';
+export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';

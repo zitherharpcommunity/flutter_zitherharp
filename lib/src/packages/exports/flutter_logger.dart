@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer';
 
 /// A logger with a unique level to easily identify the source of the log messages.
@@ -21,7 +20,6 @@ enum FlutterLogger {
     String message, {
     DateTime? time,
     String? name,
-    Zone? zone,
     Object? error,
     int? sequenceNumber,
     StackTrace? stackTrace,
@@ -30,7 +28,6 @@ enum FlutterLogger {
       '\x1B[${level}m$message\x1B[0m',
       name: name ?? '$runtimeType',
       time: time,
-      zone: zone,
       error: error,
       level: level,
       stackTrace: stackTrace,

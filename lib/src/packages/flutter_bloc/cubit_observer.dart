@@ -2,10 +2,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// A class for observing the behavior of [Cubit] instances.
-final class CubitObserver extends BlocObserver {
+final class CubitObserver implements BlocObserver {
+  const CubitObserver();
+
   @override
   void onCreate(BlocBase bloc) {
-    super.onCreate(bloc);
     FlutterLogger.green.print(
       'Create',
       name: '${bloc.runtimeType}',
@@ -14,7 +15,6 @@ final class CubitObserver extends BlocObserver {
 
   @override
   void onChange(BlocBase bloc, Change change) {
-    super.onChange(bloc, change);
     FlutterLogger.cyan.print(
       '$change',
       name: '${bloc.runtimeType}',
@@ -29,7 +29,6 @@ final class CubitObserver extends BlocObserver {
       error: error,
       stackTrace: stackTrace,
     );
-    super.onError(bloc, error, stackTrace);
   }
 
   @override
@@ -38,6 +37,21 @@ final class CubitObserver extends BlocObserver {
       'Close',
       name: '${bloc.runtimeType}',
     );
-    super.onClose(bloc);
+  }
+  
+  @override
+  void onEvent(Bloc bloc, Object? event) {
+    FlutterLogger.yellow.print(
+      'Event { $event }',
+      name: '${bloc.runtimeType}',
+    );
+  }
+  
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    FlutterLogger.blue.print(
+      'Transition { $transition }',
+      name: '${bloc.runtimeType}',
+    );
   }
 }

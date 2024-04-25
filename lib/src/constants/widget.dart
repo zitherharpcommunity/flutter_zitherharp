@@ -9,13 +9,13 @@ const Widget centeredLoadingIndicator = Center(
 );
 
 /// A linear progress indicator that tops its parent.
-const Widget toppedLoadingIndicator = Align(
+final Widget toppedLoadingIndicator = Container(
   alignment: Alignment.topCenter,
-  child: LinearProgressIndicator(),
+  child: const LinearProgressIndicator(),
 );
 
 /// A linear progress indicator that bottoms its parent.
-const Widget bottomedLoadingIndicator = Align(
+final Widget bottomedLoadingIndicator = Container(
   alignment: Alignment.bottomCenter,
-  child: LinearProgressIndicator(),
+  child: const LinearProgressIndicator(),
 );

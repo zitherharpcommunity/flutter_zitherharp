@@ -51,23 +51,22 @@ extension $BuildContextExtension on BuildContext {
   /// A set of 30 colors can be used to configure the color properties of most components.
   ColorScheme get colorScheme => _theme.colorScheme;
 
-  /// The state from the closest instance of this class.
-  ScaffoldMessengerState get _scaffoldState => ScaffoldMessenger.of(this);
+  /// The state from the closest context of [Scaffold].
+  ScaffoldState get _scaffoldState => Scaffold.of(this);
+
+  /// The state from the closest context of [ScaffoldMessenger].
+  ScaffoldMessengerState get _scaffoldMessengerState =>
+      ScaffoldMessenger.of(this);
 
   /// Insert the given [entry] into the overlay.
-  void showOverlay(OverlayEntry entry, {bool rootOverlay = false}) {
-    return Overlay.of(this, rootOverlay: rootOverlay).insert(entry);
-  }
+  void showOverlay(OverlayEntry entry, {bool rootOverlay = false}) =>
+      Overlay.of(this, rootOverlay: rootOverlay).insert(entry);
 
   /// Opens the [Drawer] (if any).
-  void openDrawer() {
-    Scaffold.of(this).openDrawer();
-  }
+  void openDrawer() => _scaffoldState.openDrawer();
 
   /// Opens the end side [Drawer] (if any).
-  void openEndDrawer() {
-    Scaffold.of(this).openEndDrawer();
-  }
+  void openEndDrawer() => _scaffoldState.openEndDrawer();
 
   /// Checks the connnection to the [url] of an host.
   Future<bool> checkConnectivity({String url = 'google.com'}) async {
@@ -89,7 +88,7 @@ extension $BuildContextExtension on BuildContext {
     SnackBarAction? action,
     SnackBarBehavior behavior = SnackBarBehavior.floating,
   }) {
-    return _scaffoldState
+    return _scaffoldMessengerState
       ..hideCurrentSnackBar()
       ..showSnackBar(
         SnackBar(
@@ -108,7 +107,7 @@ extension $BuildContextExtension on BuildContext {
     String message, {
     List<Widget> actions = const [],
   }) {
-    return _scaffoldState
+    return _scaffoldMessengerState
       ..hideCurrentMaterialBanner()
       ..showMaterialBanner(
         MaterialBanner(

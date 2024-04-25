@@ -3,6 +3,8 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 /// A widget that builds itself
 /// based on the latest snapshot of interaction
 /// with a [Future] or a [Stream].
+/// 
+/// This is a widget merged between [FutureBuilder] and [StreamBuilder].
 final class AsyncBuilder<T> extends StatelessWidget {
   /// The data that will be used to create the initial snapshot.
   final T? initial;
@@ -14,9 +16,10 @@ final class AsyncBuilder<T> extends StatelessWidget {
   /// the data provided to the [builder] will be set to [initial].
   final Future<T>? future;
 
-  /// Creates a new [StreamBuilder] that builds itself
-  /// based on the latest snapshot of interaction with the specified [stream]
-  /// and whose build strategy is given by [builder].
+  /// The asynchronous computation to which this builder is currently connected,
+  /// possibly null. When changed, the current summary is updated using
+  /// [afterDisconnected], if the previous stream was not null, followed by
+  /// [afterConnected], if the new stream is not null.
   final Stream<T>? stream;
 
   /// Returns whether this snapshot is loading.
@@ -51,56 +54,43 @@ final class AsyncBuilder<T> extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (stream == null) {
-      return _buildFutureBuilder();
+      return FutureBuilder<T>(
+        future: future,
+        initialData: initial,
+        builder: _buildSnapshot,
+      );
     }
     if (future == null) {
-      return _buildStreamBuilder();
+      return StreamBuilder<T>(
+        stream: stream,
+        initialData: initial,
+        builder: _buildSnapshot,
+      );
     }
     throw ArgumentError(_assertError);
   }
 
-  /// Creates a widget that builds itself based on
+  /// If [future] is not null,
+  /// creates a widget that builds itself based on
   /// the latest snapshot of interaction with a [Future].
-  Widget _buildFutureBuilder() {
-    return FutureBuilder<T>(
-      future: future,
-      initialData: initial,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return builder(
-            context,
-            snapshot.requireData,
-          );
-        }
-        return Center(
-          child: snapshot.hasError
-              ? errorholder ?? Text('${snapshot.error}')
-              : placeholder ?? const CircularProgressIndicator(),
-        );
-      },
-    );
-  }
-
-  /// Creates a new [StreamBuilder] that builds itself based on
-  /// the latest snapshot of interaction with the specified [stream]
-  /// and whose build strategy is given by [builder].
-  Widget _buildStreamBuilder() {
-    return StreamBuilder<T>(
-      stream: stream,
-      initialData: initial,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return builder(
-            context,
-            snapshot.requireData,
-          );
-        }
-        return Center(
-          child: snapshot.hasError
-              ? errorholder ?? Text('${snapshot.error}')
-              : placeholder ?? const CircularProgressIndicator(),
-        );
-      },
+  /// 
+  /// If [stream] is not null,
+  /// creates a new [StreamBuilder] that builds itself based on
+  /// the latest snapshot of interaction with the [Stream].
+  Widget _buildSnapshot(
+    BuildContext context,
+    AsyncSnapshot<T> snapshot,
+  ) {
+    if (snapshot.hasData) {
+      return builder(
+        context,
+        snapshot.requireData,
+      );
+    }
+    return Center(
+      child: snapshot.hasError
+          ? errorholder ?? Text('${snapshot.error}')
+          : placeholder ?? const CircularProgressIndicator(),
     );
   }
 }

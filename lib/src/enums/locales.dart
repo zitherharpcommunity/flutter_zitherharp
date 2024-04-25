@@ -21,6 +21,9 @@ sealed class Locales {
   /// English (UK).
   static const Locale en_UK = Locale('en', 'UK');
 
+  /// Vietnamese (Sino-Nom).
+  static const Locale vi_VN = Locale('vi', 'VN');
+
   /// Chinese (Simplified).
   static const Locale zh_CN = Locale('zh', 'CN');
 

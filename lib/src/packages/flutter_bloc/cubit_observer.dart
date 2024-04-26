@@ -38,7 +38,7 @@ final class CubitObserver implements BlocObserver {
       name: '${bloc.runtimeType}',
     );
   }
-  
+
   @override
   void onEvent(Bloc bloc, Object? event) {
     FlutterLogger.yellow.print(
@@ -46,7 +46,7 @@ final class CubitObserver implements BlocObserver {
       name: '${bloc.runtimeType}',
     );
   }
-  
+
   @override
   void onTransition(Bloc bloc, Transition transition) {
     FlutterLogger.blue.print(

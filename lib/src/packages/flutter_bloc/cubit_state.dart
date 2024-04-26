@@ -1,4 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// The logic and internal state for a [BaseCubit], [BaseState] and [StatefulWidget].
@@ -47,7 +46,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.initState();
     FlutterLogger.green.print(
       'Init',
-      name: '${W.runtimeType}',
+      name: '$W',
     );
   }
 
@@ -56,7 +55,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.didUpdateWidget(oldWidget);
     FlutterLogger.cyan.print(
       'Update { oldWidget: $oldWidget, newWidget: $W }',
-      name: '${W.runtimeType}',
+      name: '$W',
     );
   }
 
@@ -65,7 +64,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.dispose();
     FlutterLogger.magenta.print(
       'Dispose',
-      name: '${W.runtimeType}',
+      name: '$W',
     );
   }
 }

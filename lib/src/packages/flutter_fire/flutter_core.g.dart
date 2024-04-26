@@ -16,7 +16,7 @@ Future<void> ensureInitialized({
   Map<String, dynamic>? parameters,
 }) async {
   usePathUrlStrategy();
-  if (kDebugMode) Bloc.observer = const CubitObserver();
+  Bloc.observer = const CubitObserver();
   if (name == null && options == null) return;
   await Firebase.initializeApp(name: name, options: options);
   if (useFirebasePlugins == false) return;

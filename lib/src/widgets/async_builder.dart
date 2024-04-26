@@ -3,7 +3,7 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 /// A widget that builds itself
 /// based on the latest snapshot of interaction
 /// with a [Future] or a [Stream].
-/// 
+///
 /// This is a widget merged between [FutureBuilder] and [StreamBuilder].
 final class AsyncBuilder<T> extends StatelessWidget {
   /// The data that will be used to create the initial snapshot.
@@ -73,7 +73,7 @@ final class AsyncBuilder<T> extends StatelessWidget {
   /// If [future] is not null,
   /// creates a widget that builds itself based on
   /// the latest snapshot of interaction with a [Future].
-  /// 
+  ///
   /// If [stream] is not null,
   /// creates a new [StreamBuilder] that builds itself based on
   /// the latest snapshot of interaction with the [Stream].

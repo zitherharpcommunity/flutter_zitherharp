@@ -15,7 +15,9 @@ enum FlutterLogger {
 
   const FlutterLogger(this.level);
 
-  /// Prints a string representation of the object to the console.
+  /// Prints a string representation of the object 
+  /// to the console, only in debug mode
+  /// (this has no effect in release mode).
   void print(
     String message, {
     DateTime? time,
@@ -24,14 +26,17 @@ enum FlutterLogger {
     int? sequenceNumber,
     StackTrace? stackTrace,
   }) {
-    return log(
-      '\x1B[${level}m$message\x1B[0m',
-      name: name ?? '$runtimeType',
-      time: time,
-      error: error,
-      level: level,
-      stackTrace: stackTrace,
-      sequenceNumber: sequenceNumber,
-    );
+    assert(() {
+      log(
+        '\x1B[${level}m$message\x1B[0m',
+        name: name ?? '$runtimeType',
+        time: time,
+        error: error,
+        level: level,
+        stackTrace: stackTrace,
+        sequenceNumber: sequenceNumber,
+      );
+      return true;
+    }());
   }
 }

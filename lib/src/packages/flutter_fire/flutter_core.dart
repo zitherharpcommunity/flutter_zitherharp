@@ -12,7 +12,7 @@ Future<void> ensureInitialized({
   bool useFirebasePlugins = false,
   Map<String, dynamic>? parameters,
 }) async {
-  if (kDebugMode) Bloc.observer = const CubitObserver();
+  Bloc.observer = const CubitObserver();
   if (name == null && options == null) return;
   await Firebase.initializeApp(name: name, options: options);
   if (useFirebasePlugins == false) return;

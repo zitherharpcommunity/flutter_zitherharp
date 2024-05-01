@@ -11,12 +11,15 @@ abstract base class CubitPage<C extends BaseCubit<S>, S extends BaseState>
   @override
   @nonVirtual
   Widget build(BuildContext context) {
-    return RepositoryBuilder(
+    return CubitBuilder(
       cubit: cubit,
       listen: listen,
       builder: buildState,
+      listener: listenState,
     );
   }
 
   Widget buildState(BuildContext context, C cubit, S state);
+
+  void listenState(BuildContext context, C cubit, S state) {}
 }

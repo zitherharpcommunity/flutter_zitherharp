@@ -34,11 +34,11 @@ abstract base class FlutterDatabase {
       data = Map.from(jsonDecode(response.body));
     } else {
       final snapshot = await _database.ref(name).get();
-      data = snapshot.value as Map<dynamic, dynamic>;
+      data = snapshot.value as Map<Object?, Object?>;
     }
     return shelf[name] =
         data.entries.map((e) => parser.call(e.key, e.value)).toList();
   }
 }
 
-typedef JsonParser<T> = T Function(String id, Map<String, dynamic> json);
+typedef JsonParser<T> = T Function(String id, Map<Object?, Object?> json);

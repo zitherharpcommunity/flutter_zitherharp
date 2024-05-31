@@ -67,7 +67,7 @@ extension $FlutterRouterExtension on BuildContext {
 
   /// Navigate to a URI location with optional query parameters.
   void push<T>(
-    GoRoute route, {
+    BlocRoute route, {
     T? extra,
     Map<String, dynamic>? params,
   }) {

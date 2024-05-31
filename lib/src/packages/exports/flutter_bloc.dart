@@ -1,4 +1,5 @@
-export 'package:flutter_bloc/flutter_bloc.dart' show ReadContext, WatchContext;
+export 'package:flutter_bloc/flutter_bloc.dart'
+    show ReadContext, WatchContext, MultiBlocProvider, MultiRepositoryProvider;
 
 export '../flutter_bloc/base_cubit.dart';
 export '../flutter_bloc/base_repo.dart';

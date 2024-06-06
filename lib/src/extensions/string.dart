@@ -20,4 +20,10 @@ extension $NonNullStringExtension on String {
   /// Returns the string with the first letter capitalized.
   String get capitalized =>
       length < 2 ? this : substring(0, 1).toUpperCase() + substring(1);
+
+  /// Pads this string on the left and right with given [width].
+  String padAll(int width, [String padding = ' ']) {
+    padding = List.generate(width, (_) => padding).join();
+    return '$padding$this$padding';
+  }
 }

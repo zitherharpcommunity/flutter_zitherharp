@@ -5,7 +5,8 @@ extension $LocaleExtension on Locale {
     final tag = toLanguageTag();
     return switch (tag) {
       'vi' => 'Tiếng Việt',
-      'vi-VN' => 'Tiếng Việt (Hán Nôm)',
+      'vi-HN' => 'Tiếng Việt (Hán Nôm)',
+      'vi-VN' => 'Tiếng Việt (Hán Việt)',
       'ja' => '日本語',
       'ko' => '한국어',
       'en' => 'English',

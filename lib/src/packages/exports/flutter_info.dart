@@ -1,6 +1,8 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 abstract base class FlutterInfo {
+  String id();
+
   Widget icon(BuildContext context);
 
   String? name(BuildContext context);

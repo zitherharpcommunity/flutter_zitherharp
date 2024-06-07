@@ -21,9 +21,12 @@ extension $NonNullStringExtension on String {
   String get capitalized =>
       length < 2 ? this : substring(0, 1).toUpperCase() + substring(1);
 
-  /// Pads this string on the left and right with given [width].
-  String padAll(int width, [String padding = ' ']) {
-    padding = List.generate(width, (_) => padding).join();
-    return '$padding$this$padding';
-  }
+  /// Joins this string on the left and right with given [pattern].
+  String joinAll(Pattern pattern) => '$pattern$this$pattern';
+
+  /// Joins this string on the left with given [pattern].
+  String joinLeft(Pattern pattern) => '$pattern$this';
+
+  /// Joins this string on the right with given [pattern].
+  String joinRight(Pattern pattern) => '$this$pattern';
 }

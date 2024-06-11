@@ -42,6 +42,9 @@ extension $BuildContextExtension on BuildContext {
   /// The data from the closest [Theme] instance.
   ThemeData get _theme => Theme.of(this);
 
+  /// The data from the closest instance of this [MediaQueryData].
+  MediaQueryData get mediaQuery => MediaQuery.of(this);
+
   /// The overall theme brightness.
   Brightness get brightness => _theme.brightness;
 
@@ -115,5 +118,131 @@ extension $BuildContextExtension on BuildContext {
           actions: actions,
         ),
       );
+  }
+
+  Widget buildEmptyText({
+    required String title,
+    String? subtitle,
+    Widget? action,
+  }) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            title,
+            style: textTheme.titleMedium,
+          ),
+          if (subtitle != null)
+            Margin(
+              margin: edgeInsetsVertical8,
+              child: Text(
+                subtitle,
+                style: textTheme.bodyMedium,
+              ),
+            ),
+          if (action != null) action,
+        ],
+      ),
+    );
+  }
+
+  Future<T?> showLoadingDialog<T>({
+    required String title,
+    bool dismissible = true,
+    Future<T> Function()? function,
+  }) async {
+    showSimpleDialog<T>(
+      title: title,
+      builder: (context) {
+        return [
+          const Margin(
+            margin: edgeInsets8,
+            child: centeredLoadingIndicator,
+          ),
+        ];
+      },
+      dismissible: dismissible,
+    );
+    return function?.call().whenComplete(pop);
+  }
+
+  Future<T?> showSimpleDialog<T>({
+    required String title,
+    bool dismissible = true,
+    required List<Widget> Function(BuildContext context) builder,
+  }) {
+    return showDialog<T>(
+      context: this,
+      builder: (context) {
+        return SimpleDialog(
+          title: Text(title),
+          children: builder.call(context),
+        );
+      },
+      barrierDismissible: dismissible,
+    );
+  }
+
+  Future<T?> showRadioDialog<T>({
+    required T initial,
+    required String title,
+    required List<T> items,
+    void Function(T? value)? onChanged,
+    String Function(T value)? itemBuilder,
+    Widget? Function(T value)? iconBuilder,
+  }) {
+    return showSimpleDialog<T>(
+      title: title,
+      builder: (context) {
+        return List.from(
+          items.map((item) {
+            return RadioListTile.adaptive(
+              value: item,
+              groupValue: initial,
+              onChanged: (value) {
+                pop();
+                onChanged?.call(value);
+              },
+              title: Text(
+                itemBuilder?.call(item) ?? item.toString(),
+              ),
+              secondary: iconBuilder?.call(item),
+            );
+          }),
+        );
+      },
+    );
+  }
+
+  Future<T?> showAlertDialog<T>({
+    required String title,
+    required String subtitle,
+    required String cancelLabel,
+    required String confirmLabel,
+    AsyncCallback? onCancel,
+    AsyncCallback? onConfirm,
+  }) {
+    return showDialog<T>(
+      context: this,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(title),
+          content: Text(subtitle),
+          actions: [
+            TextButton(
+              onPressed: onCancel ?? context.pop,
+              child: Text(cancelLabel),
+            ),
+            TextButton(
+              onPressed: () => onConfirm?.call().whenComplete(pop),
+              child: Text(confirmLabel),
+            ),
+          ],
+          buttonPadding: EdgeInsets.zero,
+          actionsPadding: const EdgeInsets.all(dimension8),
+        );
+      },
+    );
   }
 }

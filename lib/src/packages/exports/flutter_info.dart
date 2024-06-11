@@ -1,21 +1,23 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 abstract base class FlutterInfo {
-  String id();
+  String alias() => throw UnimplementedError();
 
-  Widget icon(BuildContext context);
+  String id() => throw UnimplementedError();
 
-  String? name(BuildContext context);
+  Widget icon(BuildContext context) => throw UnimplementedError();
 
-  String? legalese(BuildContext context);
+  String? name(BuildContext context) => throw UnimplementedError();
 
-  Color? color();
+  String? legalese(BuildContext context) => throw UnimplementedError();
 
-  String? font();
+  Color? color() => throw UnimplementedError();
 
-  String version();
+  String? font() => throw UnimplementedError();
 
-  ImageProvider image();
+  String version() => throw UnimplementedError();
 
-  ImageProvider background();
+  ImageProvider image() => throw UnimplementedError();
+
+  ImageProvider background() => throw UnimplementedError();
 }

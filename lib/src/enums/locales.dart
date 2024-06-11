@@ -6,6 +6,18 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 /// Identifier](https://www.unicode.org/reports/tr35/#Unicode_language_identifier)
 /// (i.e. without Locale extensions).
 sealed class Locales {
+  static final List<Locale> values = [
+    vi,
+    en,
+    zh,
+    en_US,
+    en_UK,
+    vi_HN,
+    vi_HV,
+    zh_CN,
+    zh_TW,
+  ];
+  
   /// Vietnamese.
   static const Locale vi = Locale('vi');
 

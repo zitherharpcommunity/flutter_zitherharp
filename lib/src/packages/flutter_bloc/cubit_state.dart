@@ -11,16 +11,13 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
   bool get listen => true;
 
   /// Obtain a value from the nearest ancestor provider of type [C].
-  @protected
   C get cubit => context.read<C>();
 
   /// Obtain a value from the nearest ancestor provider of type [C],
   /// and subscribe to the provider.
-  @protected
   S get state => context.watch<C>().state;
 
   /// The current [stream] of [state].
-  @protected
   Stream<S> get stream => context.watch<C>().stream;
 
   /// Describes the state of the user interface represented by [W].

@@ -8,14 +8,12 @@ abstract base class FlutterDatabase {
 
   late final FirebaseDatabase _database = FirebaseDatabase.instance;
 
-  late final String _baseUrl = '$projectId-default-rtdb.firebaseio.com';
+  String? get databaseURL;
 
   FlutterDatabase() {
     _database.setLoggingEnabled(kDebugMode);
     if (!kIsWeb) _database.setPersistenceEnabled(true);
   }
-
-  String get projectId;
 
   @protected
   @nonVirtual
@@ -28,7 +26,7 @@ abstract base class FlutterDatabase {
     Map<dynamic, dynamic> data;
     if (!cache) {
       final response = await http.get(
-        Uri.parse('https://$_baseUrl/$name.json'),
+        Uri.parse('$databaseURL/$name.json'),
       );
       if (response.statusCode != 200) return [];
       data = Map.from(jsonDecode(response.body));
@@ -41,4 +39,4 @@ abstract base class FlutterDatabase {
   }
 }
 
-typedef JsonParser<T> = T Function(String id, Map<Object?, Object?> json);
+typedef JsonParser<T> = T Function(String id, dynamic json);

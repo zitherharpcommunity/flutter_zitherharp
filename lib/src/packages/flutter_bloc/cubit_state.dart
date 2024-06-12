@@ -7,9 +7,6 @@ abstract base class CubitState<C extends BaseCubit<S>, S extends BaseState,
 /// The logic and internal state mixin for a [BaseCubit], [BaseState] and [StatefulWidget].
 base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     W extends StatefulWidget> on State<W> {
-  /// Whether to listen the stream of type [C].
-  bool get listen => true;
-
   /// Obtain a value from the nearest ancestor provider of type [C].
   C get cubit => context.read<C>();
 
@@ -30,7 +27,6 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
   /// Describes the part of the user interface represented by [W].
   @override
   Widget build(BuildContext context) {
-    if (!listen) return buildState();
     return CubitBuilder<C, S>(
       cubit: cubit,
       builder: (_, __, ___) => buildState(),

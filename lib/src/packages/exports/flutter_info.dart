@@ -16,6 +16,8 @@ abstract base class FlutterInfo {
 
   String id() => throw UnimplementedError();
 
+  String title() => throw UnimplementedError();
+
   ImageProvider image() => throw UnimplementedError();
 
   String? legalese(BuildContext context) => throw UnimplementedError();

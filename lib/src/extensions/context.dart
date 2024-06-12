@@ -220,8 +220,8 @@ extension $BuildContextExtension on BuildContext {
     required String subtitle,
     required String cancelLabel,
     required String confirmLabel,
-    AsyncCallback? onCancel,
-    AsyncCallback? onConfirm,
+    VoidCallback? onCancel,
+    VoidCallback? onConfirm,
   }) {
     return showDialog<T>(
       context: this,
@@ -231,11 +231,11 @@ extension $BuildContextExtension on BuildContext {
           content: Text(subtitle),
           actions: [
             TextButton(
-              onPressed: onCancel ?? context.pop,
+              onPressed: onCancel,
               child: Text(cancelLabel),
             ),
             TextButton(
-              onPressed: () => onConfirm?.call().whenComplete(pop),
+              onPressed: onConfirm,
               child: Text(confirmLabel),
             ),
           ],

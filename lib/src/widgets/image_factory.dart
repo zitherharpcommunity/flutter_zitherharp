@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 /// The type of an [ImageFactory].
@@ -45,10 +44,6 @@ final class ImageFactory extends StatelessWidget {
   /// This allows a set of images to be identified and for the precise image
   /// to later be resolved based on the environment, e.g. the device pixel ratio.
   final ImageProvider image;
-
-  /// Whether the image should be downloaded from the internet
-  /// and keep them in the cache directory or not.
-  final bool cache;
 
   /// How to inscribe the image into the space allocated during layout.
   ///
@@ -97,7 +92,6 @@ final class ImageFactory extends StatelessWidget {
     this.fit,
     this.width,
     this.height,
-    this.cache = true,
     this.builder,
     this.errorholder,
     this.placeholder,
@@ -109,7 +103,6 @@ final class ImageFactory extends StatelessWidget {
     BoxFit? fit,
     double? width,
     double? height,
-    bool cache = true,
     ImageBuilder? builder,
     HolderBuilder? placeholder,
     HolderBuilder? errorholder,
@@ -135,7 +128,6 @@ final class ImageFactory extends StatelessWidget {
         path,
         width: width,
         height: height,
-        cache: cache,
         errorholder: errorholder,
         placeholder: placeholder,
       );
@@ -202,17 +194,13 @@ final class ImageFactory extends StatelessWidget {
     BoxFit? fit,
     double? width,
     double? height,
-    bool cache = true,
     ImageBuilder? builder,
     HolderBuilder? placeholder,
     HolderBuilder? errorholder,
   }) : this._(
-          cache
-              ? CachedNetworkImageProvider(url)
-              : NetworkImage(url) as ImageProvider,
+          NetworkImage(url),
           path: url,
           type: ImageType.network,
-          cache: cache,
           width: width,
           height: height,
           builder: builder,
@@ -240,17 +228,6 @@ final class ImageFactory extends StatelessWidget {
           errorBuilder: errorholder,
         );
       case ImageType.network:
-        if (cache) {
-          return CachedNetworkImage(
-            imageUrl: path,
-            fit: fit,
-            width: width,
-            height: height,
-            imageBuilder: builder,
-            errorWidget: errorholder,
-            progressIndicatorBuilder: placeholder,
-          );
-        }
         return Image.network(
           path,
           fit: fit,
@@ -271,14 +248,12 @@ final class ImageFactory extends StatelessWidget {
   }
 }
 
-sealed class ImageFactoryProvider {
+sealed class ImageFactoryProvider extends ImageProvider<ImageFactoryProvider> {
   static ImageProvider file(String path) => FileImage(File(path));
 
   static ImageProvider asset(String name) => AssetImage(name);
 
   static ImageProvider memory(String data) => MemoryImage(_decode(data));
 
-  static ImageProvider network(String url, {bool cache = true}) => cache
-      ? CachedNetworkImageProvider(url)
-      : NetworkImage(url) as ImageProvider;
+  static ImageProvider network(String url) => NetworkImage(url);
 }

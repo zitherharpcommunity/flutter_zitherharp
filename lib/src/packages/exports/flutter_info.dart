@@ -12,6 +12,8 @@ abstract base class FlutterInfo {
 
   String? font() => throw UnimplementedError();
 
+  String package() => throw UnimplementedError();
+
   Widget icon(BuildContext context) => throw UnimplementedError();
 
   String id() => throw UnimplementedError();

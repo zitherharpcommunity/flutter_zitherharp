@@ -23,3 +23,27 @@ const SizedBox spacerWidth36 = SizedBox(width: 36);
 
 /// Creates a fixed size box with height is `36`.
 const SizedBox spacerHeight36 = SizedBox(height: 36);
+
+/// Creates a fixed size box with width is `48`.
+const SizedBox spacerWidth48 = SizedBox(width: 48);
+
+/// Creates a fixed size box with height is `48`.
+const SizedBox spacerHeight48 = SizedBox(height: 48);
+
+/// Creates a fixed size box with width is `56`.
+const SizedBox spacerWidth56 = SizedBox(width: 56);
+
+/// Creates a fixed size box with height is `56`.
+const SizedBox spacerHeight56 = SizedBox(height: 56);
+
+/// Creates a fixed size box with width is `64`.
+const SizedBox spacerWidth64 = SizedBox(width: 64);
+
+/// Creates a fixed size box with height is `64`.
+const SizedBox spacerHeight64 = SizedBox(height: 64);
+
+/// Creates a fixed size box with width is `72`.
+const SizedBox spacerWidth72 = SizedBox(width: 72);
+
+/// Creates a fixed size box with height is `72`.
+const SizedBox spacerHeight72 = SizedBox(height: 72);

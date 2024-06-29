@@ -5,13 +5,15 @@ import 'package:http/http.dart' as http;
 abstract base class FlutterDatabase {
   @protected
   late final Map<String, dynamic> shelf = {};
-
   late final FirebaseDatabase _database = FirebaseDatabase.instance;
+
+  bool get enableLogging => false;
 
   String? get databaseURL;
 
   FlutterDatabase() {
-    _database.setLoggingEnabled(kDebugMode);
+
+    _database.setLoggingEnabled(enableLogging);    
     if (!kIsWeb) _database.setPersistenceEnabled(true);
   }
 

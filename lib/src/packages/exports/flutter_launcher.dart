@@ -28,7 +28,7 @@ sealed class FlutterLauncher {
     return openUrl('mailto:$email?subject=$subject&body=$body');
   }
 
-  static Future<bool> openGooglePlay({String? id}) {
+  static Future<bool> openGooglePlay([String? id]) {
     return openUrl(
       id != null
           ? 'https://play.google.com/store/apps/details?id=$id'

@@ -3,6 +3,9 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 /// An [EdgeInsets] with zero offsets in each direction.
 const EdgeInsets edgeInsets0 = EdgeInsets.zero;
 
+/// An edge insets where all the offsets are `4`.
+const EdgeInsets edgeInsets4 = EdgeInsets.all(4);
+
 /// An edge insets where all the offsets are `8`.
 const EdgeInsets edgeInsets8 = EdgeInsets.all(8);
 
@@ -14,6 +17,12 @@ const EdgeInsets edgeInsetsTop4 = EdgeInsets.only(top: 4);
 
 /// An edge insets with only bottom is `48`.
 const EdgeInsets edgeInsetsBottom48 = EdgeInsets.only(bottom: 48);
+
+/// An edge insets with symmetrical vertical offset is `4`.
+const EdgeInsets edgeInsetsVertical4 = EdgeInsets.symmetric(vertical: 4);
+
+/// An edge insets with symmetrical horizontal offset is `4`.
+const EdgeInsets edgeInsetsHorizontal4 = EdgeInsets.symmetric(horizontal: 4);
 
 /// An edge insets with symmetrical vertical offset is `8`.
 const EdgeInsets edgeInsetsVertical8 = EdgeInsets.symmetric(vertical: 8);

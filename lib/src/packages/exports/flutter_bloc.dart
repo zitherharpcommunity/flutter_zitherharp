@@ -1,11 +1,4 @@
-export 'package:flutter_bloc/flutter_bloc.dart'
-    show
-        ReadContext,
-        WatchContext,
-        BlocProvider,
-        MultiBlocProvider,
-        RepositoryProvider,
-        MultiRepositoryProvider;
+export 'package:flutter_bloc/flutter_bloc.dart' show ReadContext, WatchContext;
 
 export '../flutter_bloc/base_cubit.dart';
 export '../flutter_bloc/base_state.dart';

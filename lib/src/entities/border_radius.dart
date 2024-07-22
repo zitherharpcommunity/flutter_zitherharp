@@ -1,5 +1,8 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+/// Creates a border radius where all radii are `Radius.circular(4)`.
+final BorderRadius borderRadiusCircular4 = BorderRadius.circular(4);
+
 /// Creates a border radius where all radii are `Radius.circular(8)`.
 final BorderRadius borderRadiusCircular8 = BorderRadius.circular(8);
 

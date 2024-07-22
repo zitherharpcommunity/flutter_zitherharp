@@ -9,9 +9,11 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 Future<void> ensureInitialized({
   String? name,
   FirebaseOptions? options,
+  FlutterPreferences? prefs,
   bool useFirebasePlugins = false,
   Map<String, dynamic>? parameters,
 }) async {
+  await prefs?.ensureInitialized();
   Bloc.observer = const CubitObserver();
   WidgetsFlutterBinding.ensureInitialized();
   if (name == null && options == null) return;

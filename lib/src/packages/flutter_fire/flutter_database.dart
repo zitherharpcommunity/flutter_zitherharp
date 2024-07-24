@@ -20,22 +20,19 @@ abstract base class FlutterDatabase {
 
   @protected
   @nonVirtual
-  Future<List<T>> get<T>({
-    bool useClient = true,
+  Future<Map> get<T>({
+    bool useHttp = false,
     required String name,
-    required T Function(String id, dynamic fields) parser,
   }) async {
-    Map data;
-    if (!useClient) {
+    if (useHttp) {
       final response = await http.get(
         Uri.parse('${options.databaseURL}/$name.json'),
       );
-      if (response.statusCode != 200) return [];
-      data = Map.from(jsonDecode(response.body));
+      if (response.statusCode != 200) return {};
+      return Map.from(jsonDecode(response.body));
     } else {
       final snapshot = await _database.ref(name).get();
-      data = snapshot.value as Map<Object?, Object?>;
+      return snapshot.value as Map<Object?, Object?>;
     }
-    return data.entries.map((e) => parser.call(e.key, e.value)).toList();
   }
 }

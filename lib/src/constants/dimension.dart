@@ -4,7 +4,11 @@ const double kSpacing = 8.0;
 /// How much space to place between the runs themselves in the cross axis.
 const double kRunSpacing = 12.0;
 
+const double dimension2 = 2.0;
+
 const double dimension4 = 4.0;
+
+const double dimension6 = 6.0;
 
 const double dimension8 = 8.0;
 

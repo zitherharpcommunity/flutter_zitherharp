@@ -23,6 +23,27 @@ extension $IterableExtension<T> on Iterable<T> {
     _list.addAll(values);
   }
 
+  /// The first element that satisfies the given predicate [test].
+  /// 
+  /// If no element satisfies [test], return `null`.
+  T? firstWhereOrNull(bool Function(T? value) test) {
+    return cast<T?>().firstWhere(test, orElse: () => null);
+  }
+
+  /// The single element that satisfies the given predicate [test].
+  /// 
+  /// If no element satisfies [test], return `null`.
+  T? singleWhereOrNull(bool Function(T? value) test) {
+    return cast<T?>().singleWhere(test, orElse: () => null);
+  }
+
+  /// The last element that satisfies the given predicate [test].
+  /// 
+  /// If no element satisfies [test], return `null`.
+  T? lastWhereOrNull(bool Function(T? value) test) {
+    return cast<T?>().lastWhere(test, orElse: () => null);
+  }
+
   /// Appends all objects of [others] to the end of this list.
   Iterable<T> operator +(Iterable<T> others) => _list..addAll(others);
 

@@ -5,5 +5,6 @@ import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 abstract base class BaseCubit<S extends BaseState> extends Cubit<S> {
   BaseCubit(this.context, super.initialState);
 
+  @protected
   final BuildContext context;
 }

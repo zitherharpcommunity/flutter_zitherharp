@@ -22,7 +22,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
 
   /// Takes the [BuildContext] along with the [cubit] state
   /// and is responsible for executing in response to state changes.
-  void listenState() {}
+  void listenState() => throw UnimplementedError();
 
   /// Describes the part of the user interface represented by [W].
   @override
@@ -47,7 +47,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
   void didUpdateWidget(covariant W oldWidget) {
     super.didUpdateWidget(oldWidget);
     FlutterLogger.cyan.print(
-      'Update { oldWidget: $oldWidget, newWidget: $W }',
+      'Update { oldWidget: $oldWidget#${oldWidget.hashCode}, newWidget: $W#${W.hashCode} }',
       name: '$W',
     );
   }

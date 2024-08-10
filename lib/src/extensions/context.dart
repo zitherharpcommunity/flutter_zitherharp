@@ -9,22 +9,22 @@ extension $BuildContextExtension on BuildContext {
   Locale get currentLocale => Localizations.localeOf(this);
 
   /// The size of the media in logical pixels.
-  Size get _size => MediaQuery.sizeOf(this);
+  Size get size => MediaQuery.sizeOf(this);
 
   /// The horizontal extent of this size.
-  double get width => _size.width;
+  double get width => size.width;
 
   /// The vertical extent of this size.
-  double get height => _size.height;
+  double get height => size.height;
 
   /// The aspect ratio of this media.
-  double get aspectRatio => _size.aspectRatio;
+  double get aspectRatio => size.aspectRatio;
 
   /// The greater of the magnitudes of the [width] and the [height].
-  double get longestSide => _size.longestSide;
+  double get longestSide => size.longestSide;
 
   /// The lesser of the magnitudes of the [width] and the [height].
-  double get shortestSide => _size.shortestSide;
+  double get shortestSide => size.shortestSide;
 
   /// Returns orientation for the nearest MediaQuery ancestor
   /// or throws an exception, if no such ancestor exists.
@@ -40,19 +40,19 @@ extension $BuildContextExtension on BuildContext {
   Brightness get platformBrightness => MediaQuery.platformBrightnessOf(this);
 
   /// The data from the closest [Theme] instance.
-  ThemeData get _theme => Theme.of(this);
+  ThemeData get theme => Theme.of(this);
 
   /// The data from the closest instance of this [MediaQueryData].
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
   /// The overall theme brightness.
-  Brightness get brightness => _theme.brightness;
+  Brightness get brightness => theme.brightness;
 
   /// Text with a color that contrasts with the card and canvas colors.
-  TextTheme get textTheme => _theme.textTheme;
+  TextTheme get textTheme => theme.textTheme;
 
   /// A set of 30 colors can be used to configure the color properties of most components.
-  ColorScheme get colorScheme => _theme.colorScheme;
+  ColorScheme get colorScheme => theme.colorScheme;
 
   /// The state from the closest context of [Scaffold].
   ScaffoldState get _scaffoldState => Scaffold.of(this);

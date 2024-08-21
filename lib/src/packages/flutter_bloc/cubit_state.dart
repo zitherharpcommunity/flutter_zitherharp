@@ -22,7 +22,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
 
   /// Takes the [BuildContext] along with the [cubit] state
   /// and is responsible for executing in response to state changes.
-  void listenState() => throw UnimplementedError();
+  void listenState() {}
 
   /// Describes the part of the user interface represented by [W].
   @override

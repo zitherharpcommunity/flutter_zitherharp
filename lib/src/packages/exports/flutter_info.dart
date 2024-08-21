@@ -8,17 +8,19 @@ abstract base class FlutterInfo {
   /// The version code of the app.
   int code() => throw UnimplementedError();
 
-  Color color() => throw UnimplementedError();
+  Color? color() => null;
 
-  String? font() => throw UnimplementedError();
+  String? font() => null;
 
-  String package() => throw UnimplementedError();
+  String? package() => null;
 
   Widget icon(BuildContext context) => throw UnimplementedError();
 
   String id() => throw UnimplementedError();
 
   String title() => throw UnimplementedError();
+
+  ThemeData? theme() => null;
 
   ImageProvider image() => throw UnimplementedError();
 

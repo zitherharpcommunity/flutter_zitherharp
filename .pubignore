@@ -5,6 +5,7 @@ ios/
 test/
 windows/
 .git/
+.vscode/
 .gitignore
 .metadata
 .flutter-plugins

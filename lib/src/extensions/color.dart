@@ -1,7 +1,7 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 extension $ColorExtension on Color {
-  /// Converts this color to a [MaterialColor].
+  /// Converts this [Color] to a [MaterialColor].
   MaterialColor toMaterialColor() {
     final strengths = [.05];
     final swatch = <int, Color>{};

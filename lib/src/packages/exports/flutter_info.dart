@@ -8,7 +8,7 @@ abstract base class FlutterInfo {
   /// The version code of the app.
   int code() => throw UnimplementedError();
 
-  Color? color() => null;
+  Color color();
 
   String? font() => null;
 

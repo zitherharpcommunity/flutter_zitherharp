@@ -8,7 +8,7 @@ abstract base class FlutterInfo {
   /// The version code of the app.
   int code() => throw UnimplementedError();
 
-  Color color();
+  Color? color() => null;
 
   String? font() => null;
 
@@ -24,7 +24,7 @@ abstract base class FlutterInfo {
 
   ImageProvider image() => throw UnimplementedError();
 
-  String? legalese(BuildContext context) => throw UnimplementedError();
+  String? legalese(BuildContext context) => null;
 
   /// If non-null this callback function is called to produce the app's title string.
   String name(BuildContext context) => throw UnimplementedError();

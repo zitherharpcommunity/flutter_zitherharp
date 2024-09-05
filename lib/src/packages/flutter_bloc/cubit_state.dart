@@ -47,7 +47,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
   void didUpdateWidget(covariant W oldWidget) {
     super.didUpdateWidget(oldWidget);
     FlutterLogger.cyan.print(
-      'Update { oldWidget: $oldWidget#${oldWidget.hashCode}, newWidget: $W#${W.hashCode} }',
+      'Update { oldWidget: $oldWidget#${oldWidget.hashString}, newWidget: $W#${W.hashString} }',
       name: '$W',
     );
   }

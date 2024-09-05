@@ -1,6 +1,9 @@
 extension $ObjectExtension<T extends Object> on T {
   /// Marks this object as hardcoded and it will be replaced in the near future.
   T get hardcoded => this;
+
+  /// Returns a string of [hashCode] in the hexadecimal format.
+  String get hashString => hashCode.toRadixString(16);
 }
 
 String nameOf<T>(T value) => '$value';

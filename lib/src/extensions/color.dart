@@ -1,6 +1,13 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
 extension $ColorExtension on Color {
+  bool get isDark => computeLuminance() < .5;
+
+  bool get isLight => computeLuminance() >= .5;
+
+  /// A string code representing this color.
+  String get code => value.toRadixString(16).padLeft(8, '0');
+
   /// Converts this [Color] to a [MaterialColor].
   MaterialColor toMaterialColor() {
     final strengths = [.05];

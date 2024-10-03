@@ -19,8 +19,10 @@ abstract base class FlutterRouter {
     String? path,
     required String name,
     required BlocRouterBuilder builder,
+    List<BlocRoute> routes = const <BlocRoute>[],
   }) {
     return BlocRoute(
+      routes: routes,
       name: name,
       path: path ?? '/$name',
       pageBuilder: (context, state) {

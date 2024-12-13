@@ -13,7 +13,7 @@ extension $IterableExtension<T> on Iterable<T> {
   /// Returns an element of this [Iterable] randomly.
   T get random => _random.nextBool() ? shuffled.first : shuffled.last;
 
-  /// Returns an element of this [Iterable] randomly 
+  /// Returns an element of this [Iterable] randomly
   /// or `null` if this [Iterable] is empty.
   T? get randomOrNull =>
       _random.nextBool() ? shuffled.firstOrNull : shuffled.lastOrNull;

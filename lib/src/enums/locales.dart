@@ -17,7 +17,7 @@ sealed class Locales {
     zh_CN,
     zh_TW,
   ];
-  
+
   /// Vietnamese.
   static const Locale vi = Locale('vi');
 
@@ -35,7 +35,7 @@ sealed class Locales {
 
   /// Vietnamese (Han-Nom).
   static const Locale vi_HN = Locale('vi', 'HN');
-  
+
   /// Vietnamese (Han-Viet).
   static const Locale vi_HV = Locale('vi', 'HV');
 

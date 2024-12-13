@@ -15,7 +15,7 @@ enum FlutterLogger {
 
   const FlutterLogger(this.level);
 
-  /// Prints a string representation of the object 
+  /// Prints a string representation of the object
   /// to the console, only in debug mode
   /// (this has no effect in release mode).
   void print(

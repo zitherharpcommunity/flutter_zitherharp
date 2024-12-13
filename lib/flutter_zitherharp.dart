@@ -9,7 +9,7 @@ export 'package:flutter/cupertino.dart' hide RefreshCallback;
 export 'package:flutter/foundation.dart';
 export 'package:flutter/gestures.dart';
 export 'package:flutter/material.dart';
-export 'package:flutter/scheduler.dart' hide Flow, timeDilation;
+export 'package:flutter/scheduler.dart' hide timeDilation;
 export 'package:flutter/services.dart';
 export 'package:intl/intl.dart' hide TextDirection;
 

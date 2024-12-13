@@ -1,6 +1,7 @@
 android/
 build/
 example/
+extension/
 ios/
 test/
 windows/

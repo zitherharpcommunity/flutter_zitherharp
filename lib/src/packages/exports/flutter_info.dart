@@ -4,7 +4,7 @@ abstract base class FlutterInfo {
   String alias() => throw UnimplementedError();
 
   ImageProvider background() => throw UnimplementedError();
-  
+
   /// The version code of the app.
   int code() => throw UnimplementedError();
 

@@ -26,6 +26,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
 
   /// Describes the part of the user interface represented by [W].
   @override
+  @nonVirtual
   Widget build(BuildContext context) {
     return CubitBuilder<C, S>(
       cubit: cubit,
@@ -39,7 +40,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.initState();
     FlutterLogger.green.print(
       'Init',
-      name: '$W',
+      name: nameOf(W),
     );
   }
 
@@ -48,7 +49,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.didUpdateWidget(oldWidget);
     FlutterLogger.cyan.print(
       'Update { oldWidget: $oldWidget#${oldWidget.hashString}, newWidget: $W#${W.hashString} }',
-      name: '$W',
+      name: nameOf(W),
     );
   }
 
@@ -57,7 +58,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.dispose();
     FlutterLogger.magenta.print(
       'Dispose',
-      name: '$W',
+      name: nameOf(W),
     );
   }
 }

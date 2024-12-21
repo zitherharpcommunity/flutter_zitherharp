@@ -1,10 +1,16 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+/// Creates a fixed [SizedBox] with [width].
+SizedBox spacerWidth(num width) => SizedBox(width: width.toDouble());
+
+/// Creates a fixed [SizedBox] with [height].
+SizedBox spacerHeight(num height) => SizedBox(height: height.toDouble());
+
 /// Creates a fixed size box with width is `4`.
-const SizedBox spacerWidth4 = SizedBox(width: 4);
+final SizedBox spacerWidth4 = spacerWidth(4);
 
 /// Creates a fixed size box with height is `4`.
-const SizedBox spacerHeight4 = SizedBox(height: 4);
+final SizedBox spacerHeight4 = spacerHeight(4);
 
 /// Creates a fixed size box with width is `8`.
 const SizedBox spacerWidth8 = SizedBox(width: 8);

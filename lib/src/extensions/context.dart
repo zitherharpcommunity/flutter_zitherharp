@@ -6,8 +6,7 @@ extension $BuildContextExtension on BuildContext {
   /// The locale of the [Localizations] widget for the widget tree.
   ///
   /// If no [Localizations] widget is in scope then the method will throw an exception.
-  Locale get currentLocale =>
-      Localizations.maybeLocaleOf(this) ?? Localizations.localeOf(this);
+  Locale get currentLocale => Localizations.localeOf(this);
 
   /// The size of the media in logical pixels.
   Size get size => MediaQuery.sizeOf(this);

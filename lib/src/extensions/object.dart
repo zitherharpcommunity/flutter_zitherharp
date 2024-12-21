@@ -4,6 +4,8 @@ extension $ObjectExtension<T extends Object> on T {
 
   /// Returns a string of [hashCode] in the hexadecimal format.
   String get hashString => hashCode.toRadixString(16);
+
+  T? currentOrNull(bool condition) => condition ? this : null;
 }
 
 String nameOf<T>(T value) => '$value';

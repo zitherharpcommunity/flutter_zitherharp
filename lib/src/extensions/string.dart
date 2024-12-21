@@ -8,6 +8,16 @@ extension $NullableStringExtension on String? {
     if (value.isEmpty) return true;
     return false;
   }
+
+  /// Returns `true` if the string is null or blank.
+  ///
+  /// Returns `false` if the string is not null and not blank.
+  bool get isNullOrBlank {
+    final value = this;
+    if (value == null) return true;
+    if (value.isBlank) return true;
+    return false;
+  }
 }
 
 extension $NonNullStringExtension on String {

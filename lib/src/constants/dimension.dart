@@ -14,6 +14,8 @@ const double dimension8 = 8.0;
 
 const double dimension12 = 12.0;
 
+const double dimension14 = 14.0;
+
 const double dimension16 = 16.0;
 
 const double dimension24 = 24.0;

@@ -51,6 +51,9 @@ typedef BlocRouterProvider<C extends BaseCubit> = BlocProvider<C>;
 
 /// [GoRouter] extension to add navigation function to a [BuildContext] object.
 extension $FlutterRouterExtension on BuildContext {
+  /// Find the current [BlocRouter] in the widget tree.
+  BlocRouter get router => BlocRouter.of(this);
+
   /// Pop the top-most route off the current screen.
   ///
   /// If [useRootNavigator] is `true`,
@@ -60,10 +63,10 @@ extension $FlutterRouterExtension on BuildContext {
     T? result,
     bool useRootNavigator = false,
   }) {
-    if (!useRootNavigator) {
-      Navigator.pop(this, result);
+    if (useRootNavigator) {
+      router.pop(result);
     } else {
-      BlocRouter.of(this).pop(result);
+      Navigator.pop(this, result);
     }
   }
 
@@ -71,17 +74,21 @@ extension $FlutterRouterExtension on BuildContext {
   void push<T>(
     BlocRoute route, {
     T? extra,
+    bool replace = false,
     Map<String, dynamic>? params,
   }) {
     final uri = Uri(
       path: route.path,
       queryParameters: params,
     );
-    final router = BlocRouter.of(this);
     if (kIsWeb) {
       router.go('$uri', extra: extra);
     } else {
-      router.push('$uri', extra: extra);
+      if (!replace) {
+        router.push('$uri', extra: extra);
+      } else {
+        router.pushReplacement('$uri', extra: extra);
+      }
     }
   }
 

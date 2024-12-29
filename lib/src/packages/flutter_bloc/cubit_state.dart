@@ -7,6 +7,8 @@ abstract base class CubitState<C extends BaseCubit<S>, S extends BaseState,
 /// The logic and internal state mixin for a [BaseCubit], [BaseState] and [StatefulWidget].
 base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     W extends StatefulWidget> on State<W> {
+  String get debugName => nameOf(W);
+
   /// Obtain a value from the nearest ancestor provider of type [C].
   C get cubit => context.read<C>();
 
@@ -40,7 +42,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.initState();
     FlutterLogger.green.print(
       'Init',
-      name: nameOf(W),
+      name: debugName,
     );
   }
 
@@ -49,7 +51,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.didUpdateWidget(oldWidget);
     FlutterLogger.cyan.print(
       'Update { oldWidget: $oldWidget#${oldWidget.hashString}, newWidget: $W#${W.hashString} }',
-      name: nameOf(W),
+      name: debugName,
     );
   }
 
@@ -58,7 +60,7 @@ base mixin CubitStateMixin<C extends BaseCubit<S>, S extends BaseState,
     super.dispose();
     FlutterLogger.magenta.print(
       'Dispose',
-      name: nameOf(W),
+      name: debugName,
     );
   }
 }

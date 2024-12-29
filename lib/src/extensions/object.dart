@@ -3,7 +3,7 @@ extension $ObjectExtension<T extends Object> on T {
   T get hardcoded => this;
 
   /// Returns a string of [hashCode] in the hexadecimal format.
-  String get hashString => hashCode.toRadixString(16);
+  String get hashString => hashCode.toRadixString(36);
 
   T? currentOrNull(bool condition) => condition ? this : null;
 }

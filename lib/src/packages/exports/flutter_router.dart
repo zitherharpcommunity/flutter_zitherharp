@@ -98,6 +98,9 @@ extension $FlutterRouterExtension on BuildContext {
   /// An extra object to pass along with the navigation.
   Object? get extra => GoRouterState.of(this).extra;
 
+  /// The route matches with current configuration.
+  List<RouteMatch> get routes => router.routerDelegate.currentConfiguration.matches;
+
   /// Whether this route is the most route on the navigator.
   void popAll() => Navigator.popUntil(this, (route) => route.isFirst);
 }

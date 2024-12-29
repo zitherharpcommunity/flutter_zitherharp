@@ -1,10 +1,13 @@
 import 'package:flutter_zitherharp/flutter_zitherharp.dart';
 
+/// Creates a box that will become as small as its parent allows.
+const SizedBox spacerEmpty = SizedBox.shrink();
+
 /// Creates a fixed [SizedBox] with [width].
-SizedBox spacerWidth(num width) => SizedBox(width: width.toDouble());
+SizedBox spacerWidth(double width) => SizedBox(width: width);
 
 /// Creates a fixed [SizedBox] with [height].
-SizedBox spacerHeight(num height) => SizedBox(height: height.toDouble());
+SizedBox spacerHeight(double height) => SizedBox(height: height);
 
 /// Creates a fixed size box with width is `4`.
 final SizedBox spacerWidth4 = spacerWidth(4);

@@ -25,10 +25,11 @@ final class TextBuilder extends StatelessWidget {
         children: List.generate(
           children.length - 1,
           (index) {
-            final text = children[index + 1];
+            index = index + 1;
+            final text = children[index];
             return TextSpan(
               text: text,
-              style: styleBuilder?.call(style, index + 1) ?? style,
+              style: styleBuilder?.call(style, index),
               recognizer: recognizerBuilder?.call(text, index),
             );
           },
